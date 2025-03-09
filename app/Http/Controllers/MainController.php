@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DataPaket;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class MainController extends Controller
 {

@@ -21,7 +21,7 @@
                                 <th>Area Tugas</th>
                                 <th>No. Telephone</th>
                             </tr>
-        {{-- @foreach ($anggota as $item)
+        @foreach ($anggota as $item)
                             <tr>
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->nama}}</td>
@@ -40,7 +40,7 @@
                                  </a>
                             </td>
                             </tr>
-        @endforeach --}}
+        @endforeach
                         </thead>         
                     </table>
                 </div>
