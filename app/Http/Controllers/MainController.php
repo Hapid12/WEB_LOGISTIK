@@ -133,59 +133,5 @@ public function updatePaket(Request $request, $id)
         );
         return view('page/trackingHistoryProses', $data);
     }
-
-    // fungsi data kurir
-    function dataKurir(){
-        $data = array(
-            'title' => 'Data Kurir',
-
-        );
-        return view('page/dataKurir', $data);
-    }
-
-    // fungsi form tambah data kurir
-    function dataKurirProses(){
-        $data = array(
-            'title' => 'Kirim Data Kurir',
-
-        );
-        return view('page/dataKurirProses', $data);
-    }
-
-    // fungsi data pengguna
-    function dataPengguna(){
-        $data = array(
-            'title' => 'Data Pengguna',
-
-        );
-        return view('page/dataPengguna', $data);
-    }
-
-    // fungsi form tambah data pengguna
-    function dataPenggunaProses(){
-        $data = array(
-            'title' => 'Kirim Data Pengguna',
-
-        );
-        return view('page/dataPenggunaProses', $data);
-    }
-
-    // fungsi data gudang
-    function dataGudang(){
-        $data = array(
-            'title' => 'Data Gudang',
-
-        );
-        return view('page/dataGudang', $data);
-    }
-
-    // fungsi tarif pengiriman
-    function tarifPengiriman(){
-        $data = array(
-            'title' => 'Tarif Pengiriman',
-
-        );
-        return view('page/tarifPengiriman', $data);
-    }
     
 }

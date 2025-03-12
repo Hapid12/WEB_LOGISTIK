@@ -64,54 +64,6 @@
                 </button>
             </div>
             <br>
-
-               {{-- sidebar Data Kurir --}}
-               <div class="dropdown mx-3 sidebar-user user-dropdown select-dropdown">
-                <button type="button" class="btn btn-success w-100 waves-effect waves-light border-0"
-                    id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-flex align-items-center">
-                        <div class="flex-grow-1 ms-2 text-center">
-                            <a href="{{route('dataKurir')}}" class="menu-link waves-effect">Data Kurir</a>
-                        </div>
-                </button>
-            </div>
-            <br>
-
-               {{-- sidebar Data Pengguna --}}
-               <div class="dropdown mx-3 sidebar-user user-dropdown select-dropdown">
-                <button type="button" class="btn btn-success w-100 waves-effect waves-light border-0"
-                    id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-flex align-items-center">
-                        <div class="flex-grow-1 ms-2 text-center">
-                            <a href="{{route('dataPengguna')}}" class="menu-link waves-effect">Data Pengguna</a> 
-                        </div>
-                </button>
-            </div>
-            <br>
-
-            {{-- sidebar Gudang --}}
-            <div class="dropdown mx-3 sidebar-user user-dropdown select-dropdown">
-                <button type="button" class="btn btn-success w-100 waves-effect waves-light border-0"
-                    id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-flex align-items-center">
-                        <div class="flex-grow-1 ms-2 text-center">
-                            <a href="{{route('dataGudang')}}" class="menu-link waves-effect">Data Gudang </a>
-                        </div>
-                </button>
-            </div>
-            <br>
-
-            {{-- sidebar Tarif pengiriman --}}
-            <div class="dropdown mx-3 sidebar-user user-dropdown select-dropdown">
-                <button type="button" class="btn btn-success w-100 waves-effect waves-light border-0"
-                    id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-flex align-items-center">
-                        <div class="flex-grow-1 ms-2 text-center">
-                            <a href="{{route('TarifPengiriman')}}" class="menu-link waves-effect">Tarif Pengiriman</a>
-                        </div>
-                </button>
-            </div>
-            <br>
-    </div>
+</div>
 </div>          
 </div>
