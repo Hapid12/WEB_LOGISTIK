@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataPaket;
+use App\Models\TrackingHistory;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class MainController extends Controller
 {
     // fungsi home
-    function home(){
+    function home()
+    {
         $data = array(
             'title' => 'Home',
 
@@ -18,7 +20,8 @@ class MainController extends Controller
     }
 
     // fungsi data paket
-    function dataPaket(){
+    function dataPaket()
+    {
         $data = array(
             'title' => 'Data Paket',
 
@@ -28,7 +31,8 @@ class MainController extends Controller
     }
 
     // fungsi untuk form tambah data paket
-    function dataPaketProses(){
+    function dataPaketProses()
+    {
         $data = array(
             'title' => 'Kirim Data Paket',
 
@@ -37,7 +41,8 @@ class MainController extends Controller
     }
 
     // fungsi untuk menyimpan data paket
-    public function storePaket(Request $request){
+    public function storePaket(Request $request)
+    {
         $request->validate([
             'noResi' => 'required|integer',
             'pengirim' => 'required|string',
@@ -47,7 +52,7 @@ class MainController extends Controller
             'status' => 'required|string',
             'tanggalUpdate' => 'required|string',
             'estimasiTiba' => 'required|string'
-           
+
         ]);
 
         DataPaket::create([
@@ -64,40 +69,39 @@ class MainController extends Controller
     }
 
     // fungsi untuk menhapus data paket
-    function destroyPaket($id){
+    function destroyPaket($id)
+    {
         $data_Paket = DataPaket::find($id);
 
-        if($data_Paket){
+        if ($data_Paket) {
             $data_Paket->delete();
             return redirect()->route('dataPaket')->with('succes', 'data berhasil dihapus!');
-        } 
+        }
         return redirect()->route('dataPaket')->with('error', 'data tidak ditemukan');
-
-
     }
 
     // fungsi untuk mengedit data paket
     public function editPaket($id)
-{
-    $data_Paket = DataPaket::find($id);
+    {
+        $data_Paket = DataPaket::find($id);
 
-    if ($data_Paket) {
-        $data = [
-            'title' => 'Edit Data Paket',
-            'formTitle' => 'Edit Data Paket',
-            'dataPaket' => $data_Paket
-        ];
-        return view('page/editDataPaket', $data);
+        if ($data_Paket) {
+            $data = [
+                'title' => 'Edit Data Paket',
+                'formTitle' => 'Edit Data Paket',
+                'dataPaket' => $data_Paket
+            ];
+            return view('page/editDataPaket', $data);
+        }
+
+        return redirect()->route('dataPaket')->with('error', 'Data tidak ditemukan!');
     }
 
-    return redirect()->route('dataPaket')->with('error', 'Data tidak ditemukan!');
-}
-
-// fungsi untuk update data paket
-public function updatePaket(Request $request, $id)
-{
-    $validatedData = $request->validate([
-        'noResi' => 'required|integer',
+    // fungsi untuk update data paket
+    public function updatePaket(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'noResi' => 'required|integer',
             'pengirim' => 'required|string',
             'penerima' => 'required|string',
             'asal' => 'required|string',
@@ -105,20 +109,21 @@ public function updatePaket(Request $request, $id)
             'status' => 'required|string',
             'tanggalUpdate' => 'required|string',
             'estimasiTiba' => 'required|string'
-    ]);
+        ]);
 
-    $data_Paket = DataPaket::find($id);
+        $data_Paket = DataPaket::find($id);
 
-    if ($data_Paket) {
-        $data_Paket->update($validatedData);
-        return redirect()->route('dataPaket')->with('success', 'Data berhasil diperbarui!');
+        if ($data_Paket) {
+            $data_Paket->update($validatedData);
+            return redirect()->route('dataPaket')->with('success', 'Data berhasil diperbarui!');
+        }
+
+        return redirect()->route('dataPaket')->with('error', 'Data tidak ditemukan!');
     }
 
-    return redirect()->route('dataPaket')->with('error', 'Data tidak ditemukan!');
-}
-
     // fungsi tracking history
-    function trackingHistory(){
+    function trackingHistory()
+    {
         $data = array(
             'title' => 'Tracking History',
 
@@ -127,12 +132,83 @@ public function updatePaket(Request $request, $id)
     }
 
     // fungsi untuk form tambah tracking history
-    function trackingHistoryProses(){
+    function trackingHistoryProses()
+    {
         $data = array(
             'title' => 'Kirim Tracking History',
 
         );
         return view('page/trackingHistoryProses', $data);
     }
-    
+
+    // fungsi untuk menyimpan data Tracking
+    public function storeTrack(Request $request)
+    {
+        $request->validate([
+            'noResi' => 'required|integer',
+            'waktu' => 'required|integer',
+            'lokasi' => 'required|string',
+            'status' => 'required|string',
+            'tujuan' => 'required|string'
+        ]);
+
+        TrackingHistory::create([
+            'noResi' => $request->noResi,
+            'waktu' => $request->waktu,
+            'lokasi' => $request->lokasi,
+            'status' => $request->status,
+            'tujuan' => $request->tujuan,
+        ]);
+        return redirect('trackingHistory');
+    }
+
+    // fungsi untuk menhapus Track
+    function destroyTrack($id)
+    {
+        $data_Track = TrackingHistory::find($id);
+
+        if ($data_Track) {
+            $data_Track->delete();
+            return redirect()->route('trackingHistory')->with('succes', 'data berhasil dihapus!');
+        }
+        return redirect()->route('trackingHistory')->with('error', 'data tidak ditemukan');
+    }
+
+    // fungsi untuk mengedit track
+    public function editTrack($id)
+    {
+        $data_Track = TrackingHistory::find($id);
+
+        if ($data_Track) {
+            $data = [
+                'title' => 'Edit Data Tracking',
+                'formTitle' => 'Edit Data Tracking',
+                'dataPaket' => $data_Track
+            ];
+            return view('page/editDataTrack', $data);
+        }
+
+        return redirect()->route('trackingHistory')->with('error', 'Data tidak ditemukan!');
+    }
+
+    // fungsi untuk update data track
+    public function updateTrack(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'noResi' => 'required|integer',
+            'waktu' => 'required|integer',
+            'lokasi' => 'required|string',
+            'status' => 'required|string',
+            'tujuan' => 'required|string'
+        ]);
+
+        $data_Track = TrackingHistory::find($id);
+
+        if ($data_Track) {
+            $data_Track->update($validatedData);
+            return redirect()->route('trackingHistory')->with('success', 'Data berhasil diperbarui!');
+        }
+
+        return redirect()->route('trackingHistory')->with('error', 'Data tidak ditemukan!');
+    }
 }

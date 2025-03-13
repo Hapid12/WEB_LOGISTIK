@@ -11,7 +11,7 @@ class TrackingHistory extends Model
     protected $table = "data_Track";   
     protected $primaryKey = "id";
     protected $fillable = [
-        'noresi',
+        'noResi',
         'waktu',
         'lokasi',
         'status',
