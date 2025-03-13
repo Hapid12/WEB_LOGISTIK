@@ -9,6 +9,7 @@
                             <h4 class="card-title">Validation type</h4>
                             <br>
                             <form class="custom-validation" action="{{route('simpanTrack')}}" method="POST">
+                                @csrf
                                 <div class="mb-3">
                                     <label>No. Resi</label>
                                     <input type="text" id="noresi" name="noresi" class="form-control" required placeholder="No. Resi" />

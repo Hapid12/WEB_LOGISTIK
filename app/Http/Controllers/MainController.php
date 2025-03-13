@@ -126,9 +126,10 @@ class MainController extends Controller
     {
         $data = array(
             'title' => 'Tracking History',
-
         );
-        return view('page/trackingHistory', $data);
+        $data_Track = TrackingHistory::all(); // Ambil semua data tracking
+
+        return view('page/trackingHistory', compact('data_Track'), $data);
     }
 
     // fungsi untuk form tambah tracking history
@@ -159,7 +160,7 @@ class MainController extends Controller
             'status' => $request->status,
             'tujuan' => $request->tujuan,
         ]);
-        return redirect('trackingHistory');
+        return redirect()->route('trackingHistory')->with('success', 'Data berhasil disimpan!');
     }
 
     // fungsi untuk menhapus Track
@@ -183,7 +184,7 @@ class MainController extends Controller
             $data = [
                 'title' => 'Edit Data Tracking',
                 'formTitle' => 'Edit Data Tracking',
-                'dataPaket' => $data_Track
+                'dataTrack' => $data_Track
             ];
             return view('page/editDataTrack', $data);
         }
