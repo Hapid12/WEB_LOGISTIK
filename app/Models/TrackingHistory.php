@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class TrackingHistory extends Model
 {
     use HasFactory;
-    protected $table = "TrackingHistory";   
-    protected $primaryKey = "no.resi";
+    protected $table = "data_Track";   
+    protected $primaryKey = "id";
     protected $fillable = [
-        'Waktu',
-        'Lokasi',
-        'Status'
+        'noresi',
+        'waktu',
+        'lokasi',
+        'status',
+        'tujuan'
     ];
 }
