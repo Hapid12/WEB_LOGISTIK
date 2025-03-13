@@ -1,61 +1,92 @@
 @extends('layout')
-@section('content')
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <table id="datatable" class="table table-bordered dt-responsive nowrap"
-                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <h1 class="card-title">{{ $title }}</h1>
 
-                        {{-- tombol tambah data --}}
-                        <br>
-                        <a type="button" class="btn btn-primary waves-effect waves-light"
-                            href="{{ route('dataPaketProses') }}"> Tambah Data</a>
+@section('content')
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-lg border-0 rounded">
+                    <div class="card-body">
+                        <h3 class="card-title text-center text-primary fw-bold">{{ $title }}</h3>
+                        <hr>
+
+                        {{-- Tombol Tambah Data --}}
+                        <div class="d-flex justify-content-end mb-3">
+                            <a href="{{ route('dataPaketProses') }}" class="btn btn-success">
+                                <i class="fas fa-plus"></i> Tambah Data
+                            </a>
+                        </div>
+
+                        {{-- Tabel Data Paket --}}
                         <div class="table-responsive">
-                            <br>
-                            <thead>
-                                <tr>
-                                    <th>no.resi</th>
-                                    <th>Pengirim</th>
-                                    <th>Penerima</th>
-                                    <th>Asal</th>
-                                    <th>Tujuan</th>
-                                    <th>Status</th>
-                                    <th>Tanggal Update</th>
-                                    <th>Estimasi Tiba</th>
-                                </tr>
-                                @foreach ($data_Paket as $item)
+                            <table id="datatable" class="table table-striped table-hover align-middle">
+                                <thead class="table-dark">
                                     <tr>
-                                        <td>{{ $item->noResi }}</td>
-                                        <td>{{ $item->pengirim }}</td>
-                                        <td>{{ $item->penerima }}</td>
-                                        <td>{{ $item->asal }}</td>
-                                        <td>{{ $item->tujuan }}</td>
-                                        <td>{{ $item->status }}</td>
-                                        <td>{{ $item->tanggalUpdate }}</td>
-                                        <td>{{ $item->estimasiTiba }}</td>
-                                        <td>
-                                            {{-- edit --}}
-                                            <a href="{{ route('editPaket', $item->id) }}"
-                                                class="btn btn-warning waves-effect waves-light" onclick="return">
-                                                Edit
-                                            </a>
-                                            {{-- hapus --}}
-                                            <a href="{{ route('hapusPaket', $item->id) }}"
-                                                class="btn btn-danger waves-effect waves-light"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                                                Hapus
-                                            </a>
-                                        </td>
+                                        <th>No. Resi</th>
+                                        <th>Pengirim</th>
+                                        <th>Penerima</th>
+                                        <th>Asal</th>
+                                        <th>Tujuan</th>
+                                        <th>Status</th>
+                                        <th>Tanggal Update</th>
+                                        <th>Estimasi Tiba</th>
+                                        <th>Aksi</th>
                                     </tr>
-                                @endforeach
-                            </thead>
-                    </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($data_Paket as $item)
+                                        <tr>
+                                            <td>{{ $item->noResi }}</td>
+                                            <td>{{ $item->pengirim }}</td>
+                                            <td>{{ $item->penerima }}</td>
+                                            <td>{{ $item->asal }}</td>
+                                            <td>{{ $item->tujuan }}</td>
+                                            <td>
+                                                <span class="badge 
+                                                    {{ $item->status == 'Dalam Pengiriman' ? 'bg-warning' : ($item->status == 'Tiba di Tujuan' ? 'bg-success' : 'bg-danger') }} ">
+                                                    {{ $item->status }}
+                                                </span>
+                                            </td>
+                                            <td>{{ $item->tanggalUpdate }}</td>
+                                            <td>{{ $item->estimasiTiba }}</td>
+                                            <td>
+                                                {{-- Tombol Edit --}}
+                                                <a href="{{ route('editPaket', $item->id) }}" class="btn btn-warning btn-sm">
+                                                    <i class="fas fa-edit"></i> Edit
+                                                </a>
+                                                
+                                                {{-- Tombol Hapus --}}
+                                                <a href="{{ route('hapusPaket', $item->id) }}" class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                                    <i class="fas fa-trash"></i> Hapus
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div> {{-- End Table Responsive --}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
+
+    {{-- DataTables Script --}}
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                "language": {
+                    "lengthMenu": "Tampilkan _MENU_ data per halaman",
+                    "zeroRecords": "Data tidak ditemukan",
+                    "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
+                    "infoEmpty": "Tidak ada data yang tersedia",
+                    "search": "Cari:",
+                    "paginate": {
+                        "next": "Selanjutnya",
+                        "previous": "Sebelumnya"
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

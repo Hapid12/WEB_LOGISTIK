@@ -6,17 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('data_Track', function (Blueprint $table) {
             $table->id();
             $table->integer('noresi');
-            $table->integer('waktu');
+            $table->timestamp('waktu'); // Perbaiki tipe data
             $table->string('lokasi');
             $table->string('tujuan');
             $table->string('status');
@@ -24,11 +19,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('data_Track');

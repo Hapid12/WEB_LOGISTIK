@@ -12,6 +12,7 @@
 
                     <form class="custom-validation" action="{{ route('simpanTrack') }}" method="POST">
                         @csrf
+                        
                         <div class="mb-3">
                             <label for="noresi" class="form-label fw-semibold">No. Resi</label>
                             <input type="text" id="noresi" name="noresi" class="form-control" required placeholder="Masukkan No. Resi">
@@ -32,16 +33,21 @@
                             <input type="text" id="tujuan" name="tujuan" class="form-control" required placeholder="Masukkan Tujuan">
                         </div>
 
+                        {{-- Dropdown Status dengan Tata Letak Stabil --}}
                         <div class="mb-3">
                             <label for="status" class="form-label fw-semibold">Status</label>
-                            <select id="status" name="status" class="form-select" required>
-                                <option value="" disabled selected>Pilih Status</option>
-                                <option value="Dalam Perjalanan">Dalam Perjalanan</option>
-                                <option value="Tiba di Tujuan">Tiba di Tujuan</option>
-                                <option value="Gagal Dikirim">Gagal Dikirim</option>
-                            </select>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-truck"></i></span>
+                                <select id="status" name="status" class="form-select" required style="max-width: 100%;">
+                                    <option value="" disabled selected>Pilih Status</option>
+                                    <option value="Dalam Perjalanan">Dalam Perjalanan</option>
+                                    <option value="Tiba di Tujuan">Tiba di Tujuan</option>
+                                    <option value="Gagal Dikirim">Gagal Dikirim</option>
+                                </select>
+                            </div>
                         </div>
 
+                        {{-- Tombol Submit dan Reset --}}
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-paper-plane"></i> Submit
@@ -50,6 +56,7 @@
                                 <i class="fas fa-redo"></i> Reset
                             </button>
                         </div>
+
                     </form>
                 </div>
             </div>

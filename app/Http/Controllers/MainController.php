@@ -121,83 +121,80 @@ class MainController extends Controller
         return redirect()->route('dataPaket')->with('error', 'Data tidak ditemukan!');
     }
 
-    // fungsi tracking history
-    function trackingHistory()
+    // Menampilkan data tracking history
+    public function trackingHistory()
     {
-        $data = array(
+        $data = [
             'title' => 'Tracking History',
-        );
-        $data_Track = TrackingHistory::all(); // Ambil semua data tracking
+        ];
+        $data_Track = TrackingHistory::latest()->get(); // Ambil data terbaru duluan
 
-        return view('page/trackingHistory', compact('data_Track'), $data);
+        return view('page.trackingHistory', compact('data_Track'), $data);
     }
 
-    // fungsi untuk form tambah tracking history
-    function trackingHistoryProses()
+    // Form tambah tracking history
+    public function trackingHistoryProses()
     {
-        $data = array(
-            'title' => 'Kirim Tracking History',
-
-        );
-        return view('page/trackingHistoryProses', $data);
+        return view('page.trackingHistoryProses', ['title' => 'Kirim Tracking History']);
     }
 
-    // fungsi untuk menyimpan data Tracking
+    // Simpan data tracking
     public function storeTrack(Request $request)
     {
         $request->validate([
-            'noResi' => 'required|integer',
-            'waktu' => 'required|integer',
+            'noresi' => 'required|integer',
+            'waktu' => 'required|date',
             'lokasi' => 'required|string',
             'status' => 'required|string',
             'tujuan' => 'required|string'
         ]);
 
         TrackingHistory::create([
-            'noResi' => $request->noResi,
+            'noresi' => $request->noresi,
             'waktu' => $request->waktu,
             'lokasi' => $request->lokasi,
             'status' => $request->status,
             'tujuan' => $request->tujuan,
         ]);
+
         return redirect()->route('trackingHistory')->with('success', 'Data berhasil disimpan!');
     }
 
-    // fungsi untuk menhapus Track
-    function destroyTrack($id)
+    // Hapus data tracking
+    public function destroyTrack($id)
     {
         $data_Track = TrackingHistory::find($id);
 
         if ($data_Track) {
             $data_Track->delete();
-            return redirect()->route('trackingHistory')->with('succes', 'data berhasil dihapus!');
+            return redirect()->route('trackingHistory')->with('success', 'Data berhasil dihapus!');
         }
-        return redirect()->route('trackingHistory')->with('error', 'data tidak ditemukan');
+
+        return redirect()->route('trackingHistory')->with('error', 'Data tidak ditemukan');
     }
 
-    // fungsi untuk mengedit track
+    // Edit data tracking
     public function editTrack($id)
     {
         $data_Track = TrackingHistory::find($id);
 
         if ($data_Track) {
-            $data = [
+            return view('page.editDataTrack', [
                 'title' => 'Edit Data Tracking',
                 'formTitle' => 'Edit Data Tracking',
                 'dataTrack' => $data_Track
-            ];
-            return view('page/editDataTrack', $data);
+            ]);
         }
 
         return redirect()->route('trackingHistory')->with('error', 'Data tidak ditemukan!');
     }
 
-    // fungsi untuk update data track
+    // Update data tracking
     public function updateTrack(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'noResi' => 'required|integer',
-            'waktu' => 'required|integer',
+            'noresi' => 'required|integer',
+            'waktu' => 'required|date',
             'lokasi' => 'required|string',
             'status' => 'required|string',
             'tujuan' => 'required|string'
