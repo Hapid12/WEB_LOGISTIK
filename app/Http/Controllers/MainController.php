@@ -179,7 +179,7 @@ class MainController extends Controller
         $data_Track = TrackingHistory::find($id);
 
         if ($data_Track) {
-            return view('page.editDataTrack', [
+            return view('page.editTracking', [
                 'title' => 'Edit Data Tracking',
                 'formTitle' => 'Edit Data Tracking',
                 'dataTrack' => $data_Track
