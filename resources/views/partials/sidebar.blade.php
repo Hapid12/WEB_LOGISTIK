@@ -1,22 +1,10 @@
-<div class="vertical-menu">
-
+<div class="vertical-menu" style="background-color: gray">
     <!-- LOGO -->
-    <div class="navbar-brand-box">
-        <a href="/index" class="logo logo-dark">
-            <span class="logo-sm">
-                <img src="/assets/images/logo-sm-dark.png" alt="logo-sm-dark" height="24">
-            </span>
-            <span class="logo-lg">
-                <img src="/assets/images/logo-dark.png" alt="logo-dark" height="22">
-            </span>
-        </a>
-
+    <div class="navbar-brand-box text-center" style="background-color: gray">
+    
         <a href="/index" class="logo logo-light">
-            <span class="logo-sm">
-                <img src="/assets/images/logo-sm-light.png" alt="logo-sm-light" height="24">
-            </span>
             <span class="logo-lg">
-                <img src="/assets/images/logo-light.png" alt="logo-light" height="22">
+                <img src="/assets/images/PT(sidebar).png" alt="logo-light" height="90" style="width: auto;">
             </span>
         </a>
     </div>
@@ -27,43 +15,31 @@
     </button>
 
 
-        <!--- Sidemenu -->
-        <div id="sidebar-menu">
-            {{-- sidebar Home --}}
-            <div class="dropdown mx-3 sidebar-user user-dropdown select-dropdown">
-                <button type="button" class="btn btn-success w-100 waves-effect waves-light border-0"
-                    id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-flex align-items-center">
-                        <div class="flex-grow-1 ms-2 text-center">
-                            <a href="{{route('home')}}" class="menu-link waves-effect"> Home </a>
-                        </div>
-                </button>
-            </div>
-                <br>
-
-                {{-- sidebar data paket --}}
-            <div class="dropdown mx-3 sidebar-user user-dropdown select-dropdown">
-                <button type="button" class="btn btn-success w-100 waves-effect waves-light border-0"
-                    id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{{route('dataPaket')}}">
-                    <span class="d-flex align-items-center">
-                        <div class="flex-grow-1 ms-2 text-center">      
-                            <a href="{{route('dataPaket')}}" class="menu-link waves-effect"> Data Paket</a>
-                        </div>
-                </button>
-            </div>
-            <br>
-
-            {{-- sidebar tracking history --}}
-            <div class="dropdown mx-3 sidebar-user user-dropdown select-dropdown">
-                <button type="button" class="btn btn-success w-100 waves-effect waves-light border-0"
-                    id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-flex align-items-center">
-                        <div class="flex-grow-1 ms-2 text-center">
-                            <a href="{{route('trackingHistory')}}" class="menu-link waves-effect">Tracking History </a>
-                        </div>
-                </button>
-            </div>
-            <br>
-</div>
+    
+    <div class="mx-3" style="margin-top: 30px;">
+        <a href="{{ route('home') }}" 
+           style="display: block; width: 100%; text-align: center; border: 2px solid white; border-radius: 8px; padding: 10px; color: black; font-weight: bold; background-color: transparent;">
+            Home
+        </a>
+    </div>
+    <br>
+    
+    <div class="mx-3">
+        <a href="{{ route('dataPaket') }}" 
+           style="display: block; width: 100%; text-align: center; border: 2px solid white; border-radius: 8px; padding: 10px; color: black; font-weight: bold; background-color: transparent;">
+            Data Paket
+        </a>
+    </div>
+    <br>
+    
+    <div class="mx-3">
+        <a href="{{ route('trackingHistory') }}" 
+           style="display: block; width: 100%; text-align: center; border: 2px solid white; border-radius: 8px; padding: 10px; color: black; font-weight: bold; background-color: transparent;">
+            Tracking History
+        </a>
+    </div>
+    <br>
+    
+    
 </div>          
 </div>

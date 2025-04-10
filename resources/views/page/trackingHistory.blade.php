@@ -18,21 +18,22 @@
 
                         {{-- Tabel Data Tracking --}}
                         <div class="table-responsive">
-                            <table id="datatable" class="table table-striped table-hover align-middle">
+                            <table id="datatable" class="table table-striped table-hover table-bordered align-middle text-center"
+                             style="border-collapse: separate; border-spacing: 0 8px;">
                                 <thead class="table-dark">
-                                    <tr>
+                                    <tr style="border-radius: 10px;">
                                         <th>No. Resi</th>
                                         <th>Waktu</th>
                                         <th>Lokasi</th>
                                         <th>Tujuan</th>
                                         <th>Status</th>
-                                        <th>Aksi</th>
+                                        <th class="rounded-top-end">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data_Track as $item)
                                         <tr>
-                                            <td>{{ $item->noResi }}</td>
+                                            <td>{{ $item->noresi }}</td>
                                             <td>{{ \Carbon\Carbon::parse($item->waktu)->format('d-m-Y H:i') }}</td>
                                             <td>{{ $item->lokasi }}</td>
                                             <td>{{ $item->tujuan }}</td>
@@ -61,6 +62,36 @@
             </div>
         </div>
     </div>
+
+    <style>
+        /* Border untuk semua sisi td dan th */
+     #datatable th, #datatable td {
+         border: 1px solid #dee2e6;  /* Warna garis abu soft */
+     }
+ 
+     /* Header lebih tebal dan rapi */
+     #datatable thead th {
+         background-color: #1e293b;  /* Dark grey (bisa diganti sesuai selera) */
+         color: white;
+         border-bottom: 2px solid #dee2e6;
+         vertical-align: middle;
+     }
+ 
+     /* Hover row efek */
+     #datatable tbody tr:hover {
+         background-color: #f1f5f9;  /* Hover warna soft */
+     }
+ 
+     /* Biar cell gak terlalu dempet */
+     #datatable td, #datatable th {
+         padding: 12px 8px;
+     }
+ 
+     /* Responsive biar ga mepet */
+     .table-responsive {
+         overflow-x: auto;
+     }
+     </style>
 
     {{-- DataTables Script --}}
     <script>

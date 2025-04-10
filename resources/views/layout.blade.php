@@ -1,6 +1,6 @@
 @include('partials.head')
 
-<body data-sidebar="colored" >
+<body data-sidebar="colored" style="background-color: #F8FAFC;">
 
     <!-- start page title -->
 <div class="row">

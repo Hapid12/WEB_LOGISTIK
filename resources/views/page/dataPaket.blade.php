@@ -16,26 +16,27 @@
                             </a>
                         </div>
 
-                        {{-- Tabel Data Paket --}}
-                        <div class="table-responsive">
-                            <table id="datatable" class="table table-striped table-hover align-middle">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>No. Resi</th>
-                                        <th>Pengirim</th>
-                                        <th>Penerima</th>
-                                        <th>Asal</th>
-                                        <th>Tujuan</th>
-                                        <th>Status</th>
-                                        <th>Tanggal Update</th>
-                                        <th>Estimasi Tiba</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
+                            {{-- Tabel Data Paket --}}
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-striped table-hover table-bordered align-middle text-center"
+                                 style="border-collapse: separate; border-spacing: 0 8px;">
+                                    <thead class="table-dark">
+                                        <tr style="border-radius: 10px;">
+                                            <th class="rounded-top-start">No. Resi</th>
+                                            <th>Pengirim</th>
+                                            <th>Penerima</th>
+                                            <th>Asal</th>
+                                            <th>Tujuan</th>
+                                            <th>Status</th>
+                                            <th>Tanggal Update</th>
+                                            <th>Estimasi Tiba</th>
+                                            <th class="rounded-top-end">Aksi</th>
+                                        </tr>
+                                    </thead>
                                 <tbody>
                                     @foreach ($data_Paket as $item)
                                         <tr>
-                                            <td>{{ $item->noResi }}</td>
+                                            <td>{{ $item->noresi }}</td>
                                             <td>{{ $item->pengirim }}</td>
                                             <td>{{ $item->penerima }}</td>
                                             <td>{{ $item->asal }}</td>
@@ -54,7 +55,7 @@
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
                                                 
-                                                {{-- Tombol Hapus --}}
+                                          {{-- Tombol Hapus --}}
                                                 <a href="{{ route('hapusPaket', $item->id) }}" class="btn btn-danger btn-sm"
                                                     onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                     <i class="fas fa-trash"></i> Hapus
@@ -70,7 +71,36 @@
             </div>
         </div>
     </div>
+    <style>
+       /* Border untuk semua sisi td dan th */
+    #datatable th, #datatable td {
+        border: 1px solid #dee2e6;  /* Warna garis abu soft */
+    }
 
+    /* Header lebih tebal dan rapi */
+    #datatable thead th {
+        background-color: #1e293b;  /* Dark grey (bisa diganti sesuai selera) */
+        color: white;
+        border-bottom: 2px solid #dee2e6;
+        vertical-align: middle;
+    }
+
+    /* Hover row efek */
+    #datatable tbody tr:hover {
+        background-color: #f1f5f9;  /* Hover warna soft */
+    }
+
+    /* Biar cell gak terlalu dempet */
+    #datatable td, #datatable th {
+        padding: 12px 8px;
+    }
+
+    /* Responsive biar ga mepet */
+    .table-responsive {
+        overflow-x: auto;
+    }
+    </style>
+    
     {{-- DataTables Script --}}
     <script>
         $(document).ready(function () {
@@ -89,4 +119,5 @@
             });
         });
     </script>
+    
 @endsection
