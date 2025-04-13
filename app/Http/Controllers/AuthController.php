@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
@@ -58,4 +59,40 @@ class AuthController extends Controller
 
         return redirect('/login');
     }
+
+    
+
+    public function updateProfile(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        // Validasi input
+        $validated = $request->validate([
+            'username' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        // Update username dan email
+        $user->username = $validated['username'];
+        $user->email = $validated['email'];
+
+        // Cek jika ada foto baru
+        if ($request->hasFile('photo')) {
+            // Hapus foto lama jika ada
+            if ($user->photo && Storage::exists('public/' . $user->photo)) {
+                Storage::delete('public/' . $user->photo);
+            }
+
+            // Simpan foto baru
+            $user->photo = $request->file('photo')->store('photos', 'public');
+        }
+
+        // Simpan perubahan ke database
+        $user->save();
+
+        // Kembalikan ke halaman profil dengan pesan sukses
+        return redirect()->route('profile')->with('success', 'Profil berhasil diperbarui.');
+    }
+    
 }

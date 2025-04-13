@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('username')->unique(); // <-- Ini WAJIB ADA
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('photo')->nullable()->after('email');
             $table->timestamps();
         });        
     }
@@ -29,6 +30,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('photo');
+        });
     }
 };

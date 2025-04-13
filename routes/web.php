@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,8 @@ Route::get('/home', function () {
 Route::get('/home', [MainController::class, 'home'])->name('home');
 Route::get('/dataPaket', [MainController::class, 'dataPaket'])->name('dataPaket');
 Route::get('/trackingHistory', [MainController::class, 'trackingHistory'])->name('trackingHistory');
+Route::get('/profile', [MainController::class, 'profile'])->name('profile');
+Route::put('/profile/{id}', [Authcontroller::class, 'updateProfile'])->name('profile.update');
 
 //data paket
 Route::get('/dataPaketProses', [MainController::class, 'dataPaketProses'])->name('dataPaketProses');

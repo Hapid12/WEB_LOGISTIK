@@ -24,8 +24,8 @@
                             {{-- No Resi --}}
                             <div class="mb-3">
                                 <label class="fw-bold">No. Resi</label>
-                                <input type="number" id="noResi" name="noResi" class="form-control" required 
-                                    placeholder="Masukkan No. Resi" value="{{ old('noResi', $dataPaket->noResi) }}">
+                                <input type="number" id="noresi" name="noresi" class="form-control" required 
+                                    placeholder="Masukkan No. Resi" value="{{ old('noresi', $dataPaket->noresi) }}">
                             </div>
 
                             {{-- Pengirim --}}

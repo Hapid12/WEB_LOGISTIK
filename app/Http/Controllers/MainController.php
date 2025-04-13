@@ -101,7 +101,7 @@ class MainController extends Controller
     public function updatePaket(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'noResi' => 'required|integer',
+            'noresi' => 'required|integer',
             'pengirim' => 'required|string',
             'penerima' => 'required|string',
             'asal' => 'required|string',
@@ -208,5 +208,13 @@ class MainController extends Controller
         }
 
         return redirect()->route('trackingHistory')->with('error', 'Data tidak ditemukan!');
+    }
+
+    public function profile()
+    {
+        $data = [
+            'title' => 'Profile',
+        ];
+        return view('page/profile', $data);
     }
 }

@@ -18,18 +18,35 @@
             </button>
 
             <!-- User Dropdown -->
-            <div class="dropdown">
-                <button class="btn btn-light btn-sm d-flex align-items-center gap-2 rounded-pill shadow-sm" data-bs-toggle="dropdown">
-                    <img src="/assets/images/user.png" alt="user" class="rounded-circle" height="30" width="30">
-                    <span class="d-none d-md-inline text-dark fw-medium">Hi, Admin</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Profil</a></li>
-                    <li><a class="dropdown-item" href="#">Pengaturan</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-danger" href="#">Keluar</a></li>
-                </ul>
-            </div>
+<div class="dropdown">
+    <button class="btn btn-light btn-sm d-flex align-items-center gap-2 rounded-pill shadow-sm"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ Auth::user()->photo ? asset('storage/' . Auth::user()->photo) : '/assets/images/user.png' }}"
+            alt="Foto Profil"
+            class="w-9 h-9 rounded-full object-cover border border-white shadow">       
+        <span class="d-none d-md-inline text-dark fw-medium">Hi, {{ Auth::user()->name }}</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <li>
+            <a class="dropdown-item" href="{{ route('profile') }}">Profil</a>
+        </li>
+        {{-- <li>
+            <a class="dropdown-item" href="{{ route('settings') }}">Pengaturan</a>
+        </li> --}}
+        <li><hr class="dropdown-divider"></li>
+        <li>
+            <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+               Keluar
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </li>
+    </ul>
+</div>
+
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </header>
