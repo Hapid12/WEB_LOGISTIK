@@ -37,8 +37,9 @@ Route::get('/home', function () {
 Route::get('/home', [MainController::class, 'home'])->name('home');
 Route::get('/dataPaket', [MainController::class, 'dataPaket'])->name('dataPaket');
 Route::get('/trackingHistory', [MainController::class, 'trackingHistory'])->name('trackingHistory');
-Route::get('/profile', [MainController::class, 'profile'])->name('profile');
+Route::get('/profile', [Authcontroller::class, 'profile'])->name('profile');
 Route::put('/profile/{id}', [Authcontroller::class, 'updateProfile'])->name('profile.update');
+Route::get('/pengiriman', [MainController::class, 'pengiriman'])->name('pengiriman');
 
 //data paket
 Route::get('/dataPaketProses', [MainController::class, 'dataPaketProses'])->name('dataPaketProses');

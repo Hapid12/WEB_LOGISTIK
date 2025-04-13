@@ -18,6 +18,9 @@
         <a href="{{ route('trackingHistory') }}" class="menu-link {{ request()->routeIs('trackingHistory') ? 'active' : '' }}">
             <i class="ri-map-pin-line me-2"></i> <span>Tracking History</span>
         </a>
+            <a href="{{ route('pengiriman') }}" class="menu-link {{ request()->routeIs('pengirim') ? 'active' : '' }}">
+                <i class="ri-truck-line me-2"></i> <span>Pengirim</span>
+            </a>
     </div>
 </div>
 

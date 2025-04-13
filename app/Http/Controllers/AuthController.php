@@ -60,8 +60,16 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
-    
+    // fungsi untuk profile
+    public function profile()
+    {
+        $data = [
+            'title' => 'Profile',
+        ];
+        return view('page/profile', $data);
+    }
 
+    // fungsi untuk update isi profile
     public function updateProfile(Request $request, $id)
     {
         $user = User::findOrFail($id);

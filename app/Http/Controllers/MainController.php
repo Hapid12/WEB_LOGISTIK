@@ -210,11 +210,16 @@ class MainController extends Controller
         return redirect()->route('trackingHistory')->with('error', 'Data tidak ditemukan!');
     }
 
-    public function profile()
+    // Fungsi untuk model pengirim
+    public function pengiriman()
     {
         $data = [
-            'title' => 'Profile',
+            'title' => 'Pengirim',
         ];
-        return view('page/profile', $data);
+
+        $data_Track = TrackingHistory::latest()->get();
+        return view('page\pengiriman', compact('data_Track'), $data);
     }
 }
+
+
