@@ -220,6 +220,30 @@ class MainController extends Controller
         $data_Track = TrackingHistory::latest()->get();
         return view('page\pengiriman', compact('data_Track'), $data);
     }
+
+    // Fungsi untuk model tarif harga
+    public function tarifHarga()
+    {
+        $data = [
+            'title' => 'Tarif Harga',
+        ];
+
+        $data_Track = TrackingHistory::latest()->get();
+        return view('page\tarifHarga', compact('data_Track'), $data);
+    }
+
+    // fungsi tabel riwayat
+    public function tabelRiwayat()
+{
+    $data = [
+        'title' => 'Tabel Riwayat',
+    ];
+
+    $data_Track = TrackingHistory::latest()->get();
+    return view('page\tabelRiwayat', compact('data_Track'), $data);
+    }
 }
+
+
 
 

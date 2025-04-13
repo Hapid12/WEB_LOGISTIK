@@ -18,9 +18,15 @@
         <a href="{{ route('trackingHistory') }}" class="menu-link {{ request()->routeIs('trackingHistory') ? 'active' : '' }}">
             <i class="ri-map-pin-line me-2"></i> <span>Tracking History</span>
         </a>
-            <a href="{{ route('pengiriman') }}" class="menu-link {{ request()->routeIs('pengirim') ? 'active' : '' }}">
-                <i class="ri-truck-line me-2"></i> <span>Pengirim</span>
-            </a>
+        <a href="{{ route('pengiriman') }}" class="menu-link {{ request()->routeIs('pengirim') ? 'active' : '' }}">
+            <i class="ri-truck-line me-2"></i> <span>Pengirim</span>
+        </a>
+        <a href="{{ route('tarifHarga') }}" class="menu-link {{ request()->routeIs('tarifHarga') ? 'active' : '' }}">
+            <i class="ri-money-dollar-circle-line"></i> <span>Tarif Harga</span>
+        </a>
+        <a href="{{ route('tabelRiwayat') }}" class="menu-link {{ request()->routeIs('tabelRiwayat') ? 'active' : '' }}">
+            <i class="ri-time-line"></i> <span>Tabel Riwayat</span>
+        </a>
     </div>
 </div>
 

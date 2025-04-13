@@ -40,6 +40,8 @@ Route::get('/trackingHistory', [MainController::class, 'trackingHistory'])->name
 Route::get('/profile', [Authcontroller::class, 'profile'])->name('profile');
 Route::put('/profile/{id}', [Authcontroller::class, 'updateProfile'])->name('profile.update');
 Route::get('/pengiriman', [MainController::class, 'pengiriman'])->name('pengiriman');
+Route::get('/tarifHarga', [MainController::class, 'tarifHarga'])->name('tarifHarga');
+Route::get('/tabelRiwayat', [MainController::class, 'tabelRiwayat'])->name('tabelRiwayat');
 
 //data paket
 Route::get('/dataPaketProses', [MainController::class, 'dataPaketProses'])->name('dataPaketProses');
