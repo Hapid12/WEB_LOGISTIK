@@ -15,8 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AuthController::class, 'login'])->name('login');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/', function () {
+    return redirect('/login');
+});
+
+// Auth Section
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Protected route
+Route::get('/home', function () {
+    return view('home');
+})->middleware('auth');
 
 Route::get('/home', [MainController::class, 'home'])->name('home');
 Route::get('/dataPaket', [MainController::class, 'dataPaket'])->name('dataPaket');

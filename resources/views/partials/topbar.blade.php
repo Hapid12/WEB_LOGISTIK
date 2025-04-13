@@ -1,47 +1,35 @@
+<!-- TOPBAR -->
 <header id="page-topbar">
-    <div class="navbar-header" style="background-color: #FFFFFF">
-        <div class="d-flex">
-            <!-- LOGO -->
-            <div class="navbar-brand-box">
-                <a href="/index" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="/assets/images/logo-dark.png" alt="logo-sm-dark" height="24">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="/assets/images/logo-sm-dark.png" alt="logo-dark" height="25">
-                    </span>
-                </a>
+    <div class="navbar-header d-flex justify-content-between align-items-center px-3" style="background-color: #FFFFFF; height: 70px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
 
-                <a href="/index" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="/assets/images/logo-light.png" alt="logo-sm-light" height="24">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="/assets/images/logo-sm-light.png" alt="logo-light" height="25">
-                    </span>
-                </a>
+        <!-- LEFT: Logo + Title -->
+        <div class="d-flex align-items-center gap-3">
+            <!-- PAGE TITLE -->
+            <div class="page-title-box">
+                <h5 class="mb-0 fw-semibold text-dark">{{$title}}</h5>
             </div>
-
-            <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect vertical-menu-btn"
-                id="vertical-menu-btn">
-                <i class="ri-menu-2-line align-middle"></i>
-            </button>
-
-            <!-- start page title -->
-            <div class="page-title-box align-self-center d-none d-md-block">
-                <h4 class="page-title mb-0">{{$title}}</h4>
-            </div>
-            <!-- end page title -->
         </div>
 
-        <div class="d-flex">
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                    <i class="ri-settings-2-line"></i>
-                </button>
-            </div>
+        <!-- RIGHT: Settings + User -->
+        <div class="d-flex align-items-center gap-3">
+            <!-- Settings -->
+            <button type="button" class="btn btn-light btn-sm rounded-circle shadow-sm" title="Settings">
+                <i class="ri-settings-2-line"></i>
+            </button>
 
+            <!-- User Dropdown -->
+            <div class="dropdown">
+                <button class="btn btn-light btn-sm d-flex align-items-center gap-2 rounded-pill shadow-sm" data-bs-toggle="dropdown">
+                    <img src="/assets/images/user.png" alt="user" class="rounded-circle" height="30" width="30">
+                    <span class="d-none d-md-inline text-dark fw-medium">Hi, Admin</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Profil</a></li>
+                    <li><a class="dropdown-item" href="#">Pengaturan</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-danger" href="#">Keluar</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </header>
-

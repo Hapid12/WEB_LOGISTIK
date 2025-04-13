@@ -48,6 +48,9 @@
                 <!-- apexcharts -->
                 <script src="/assets/libs/apexcharts/apexcharts.min.js"></script>
 
+                <script src="https://cdn.tailwindcss.com"></script>
+
+
                 <!-- Vector map-->
                 <script src="/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
                 <script src="/assets/libs/jsvectormap/maps/world-merc.js"></script>

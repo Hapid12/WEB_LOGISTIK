@@ -9,6 +9,7 @@
 <!-- Icons Css -->
 <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 <!-- App Css-->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 <meta charset="utf-8" />
 <title>
