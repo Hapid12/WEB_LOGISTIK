@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username')->unique(); // <-- Ini WAJIB ADA
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('photo')->nullable()->after('email');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });        
     }
