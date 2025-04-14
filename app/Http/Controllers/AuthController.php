@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
@@ -70,37 +70,34 @@ class AuthController extends Controller
     }
 
     // fungsi untuk update isi profile
-    public function updateProfile(Request $request, $id)
+    public function updateProfile(Request $request)
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
-        // Validasi input
-        $validated = $request->validate([
-            'username' => 'required|max:255',
-            'email' => 'required|email|max:255',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+    $request->validate([
+        'username' => [
+            'required', 'string', 'max:255',
+            Rule::unique('users')->ignore($user->id),
+        ],
+        'email' => [
+            'required', 'email', 'max:255',
+            Rule::unique('users')->ignore($user->id),
+        ],
+        'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+    ]);
 
-        // Update username dan email
-        $user->username = $validated['username'];
-        $user->email = $validated['email'];
+    $user->username = $request->username;
+    $user->email = $request->email;
 
-        // Cek jika ada foto baru
-        if ($request->hasFile('photo')) {
-            // Hapus foto lama jika ada
-            if ($user->photo && Storage::exists('public/' . $user->photo)) {
-                Storage::delete('public/' . $user->photo);
-            }
+    if ($request->hasFile('photo')) {
+        $filename = time() . '.' . $request->photo->extension();
+        $request->photo->storeAs('public', $filename);
+        $user->photo = $filename;
+    }
 
-            // Simpan foto baru
-            $user->photo = $request->file('photo')->store('photos', 'public');
-        }
+    $user->save();
 
-        // Simpan perubahan ke database
-        $user->save();
-
-        // Kembalikan ke halaman profil dengan pesan sukses
-        return redirect()->route('profile')->with('success', 'Profil berhasil diperbarui.');
+    return redirect()->route('profile')->with('success', 'Profil berhasil diperbarui.');
     }
     
 }
