@@ -5,14 +5,14 @@
 <div class="max-w-4xl mx-auto py-12 px-6">
     <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
         <div class="bg-gradient-to-r from-gray-500 to-gray-700 p-6 text-white flex items-center gap-6">
-            @if(Auth::user()->photo)
+            @if(Auth::check() && Auth::user()->photo)   
                 <img src="{{ asset('storage/' . Auth::user()->photo) }}" 
                      alt="Foto Profil" 
                      class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover">
             @else
-                <img src="https://ui-avatars.com/api/?username={{ urlencode(Auth::user()->username) }}" 
-                     alt="Avatar" 
-                     class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover">
+            <img src="https://ui-avatars.com/api/?username={{ urlencode(Auth::user()?->username ?? 'User') }}" 
+            alt="Avatar" 
+            class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover">
             @endif
             <div>
                 <h2 class="text-white text-2xl font-bold">{{ Auth::user()->username }}</h2>
