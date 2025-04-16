@@ -236,7 +236,7 @@ class MainController extends Controller
     public function tabelRiwayat()
 {
     $data = [
-        'title' => 'Tabel Riwayat',
+        'title' => 'Riwayat Pengguna',
     ];
 
     $data_Track = TrackingHistory::latest()->get();
