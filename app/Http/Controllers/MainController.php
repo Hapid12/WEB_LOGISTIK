@@ -44,26 +44,15 @@ class MainController extends Controller
     public function storePaket(Request $request)
     {
         $request->validate([
-            'noResi' => 'required|integer',
-            'pengirim' => 'required|string',
-            'penerima' => 'required|string',
-            'asal' => 'required|string',
-            'tujuan' => 'required|string',
-            'status' => 'required|string',
-            'tanggalUpdate' => 'required|string',
-            'estimasiTiba' => 'required|string'
+            'namaBarang' => 'required|string',
+            'jenisBarang' => 'required|string'
 
         ]);
 
         DataPaket::create([
             'noResi' => $request->noResi,
-            'pengirim' => $request->pengirim,
-            'penerima' => $request->penerima,
-            'asal' => $request->asal,
-            'tujuan' => $request->tujuan,
-            'status' => $request->status,
-            'tanggalUpdate' => $request->tanggalUpdate,
-            'estimasiTiba' => $request->estimasiTiba
+            'namaBarang' => $request->namaBarang,
+            'jenisBarang' => $request->jenisBarang,
         ]);
         return redirect('dataPaket');
     }
@@ -101,14 +90,8 @@ class MainController extends Controller
     public function updatePaket(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'noresi' => 'required|integer',
-            'pengirim' => 'required|string',
-            'penerima' => 'required|string',
-            'asal' => 'required|string',
-            'tujuan' => 'required|string',
-            'status' => 'required|string',
-            'tanggalUpdate' => 'required|string',
-            'estimasiTiba' => 'required|string'
+            'namaBarang' => 'required|string',
+            'jenisBarang' => 'required|string'
         ]);
 
         $data_Paket = DataPaket::find($id);
@@ -142,22 +125,18 @@ class MainController extends Controller
     public function storeTrack(Request $request)
     {
         $request->validate([
-            'noresi' => 'required|integer',
-            'waktu' => 'required|date',
-            'lokasi' => 'required|string',
-            'status' => 'required|string',
-            'tujuan' => 'required|string'
+            'layanan' => 'required|string',
+            'waktuPengiriman' => 'required|date',
+            'estimasiTiba' => 'required|date'
         ]);
 
         TrackingHistory::create([
-            'noresi' => $request->noresi,
-            'waktu' => $request->waktu,
-            'lokasi' => $request->lokasi,
-            'status' => $request->status,
-            'tujuan' => $request->tujuan,
+            'layanan' => $request->layanan,
+            'waktuPengiriman' => $request->waktuPengiriman,
+            'estimasiTiba' => $request->estimasiTiba
         ]);
 
-        return redirect()->route('trackingHistory')->with('success', 'Data berhasil disimpan!');
+        return redirect('trackingHistory')->with('success', 'Data berhasil disimpan!');
     }
 
     // Hapus data tracking
@@ -193,11 +172,9 @@ class MainController extends Controller
     public function updateTrack(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'noresi' => 'required|integer',
-            'waktu' => 'required|date',
-            'lokasi' => 'required|string',
-            'status' => 'required|string',
-            'tujuan' => 'required|string'
+            'layanan' => 'required|string',
+            'waktuPengiriman' => 'required|date',
+            'estimasiTiba' => 'required|date'
         ]);
 
         $data_Track = TrackingHistory::find($id);

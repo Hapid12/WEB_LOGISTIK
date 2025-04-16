@@ -21,43 +21,28 @@
                         <form action="{{ route('updateTrack', $dataTrack->id) }}" method="post">
                             @csrf
 
-                            {{-- No Resi --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">No. Resi</label>
-                                <input type="number" id="noresi" name="noresi" class="form-control" required 
-                                    placeholder="Masukkan No. Resi" value="{{ old('noresi', $dataTrack->noresi) }}">
-                            </div>
+                            {{-- Layanan --}}
+                        <div class="mb-3">
+                            <label class="fw-bold">Layanan</label>
+                            <select id="layanan" name="layanan" class="form-select" required>
+                                <option value="" disabled selected>Pilih Layanan</option>
+                                <option value="Udara" {{ $dataTrack->layanan == 'Udara' ? 'selected' : '' }}>Udara</option>
+                                <option value="Laut" {{ $dataTrack->layanan == 'Laut' ? 'selected' : '' }}>Laut</option>
+                                <option value="Darat" {{ $dataTrack->layanan == 'Darat' ? 'selected' : '' }}>Darat</option>
+                            </select>
+                        </div>
 
-                            {{-- Waktu --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Waktu</label>
-                                <input type="datetime-local" id="waktu" name="waktu" class="form-control" required
-                                    value="{{ old('waktu', $dataTrack->waktu) }}">
-                            </div>
+                        {{-- Waktu pengiriman--}}
+                        <div class="mb-3">
+                            <label class="fw-bold">Waktu Pengiriman</label>
+                            <input type="date" id="waktuPengiriman" name="waktuPengiriman" class="form-control" value="{{ old('waktuPengiriman', $dataTrack->waktuPengiriman) }}" required>
+                        </div>
 
-                            {{-- Lokasi --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Lokasi</label>
-                                <input type="text" id="lokasi" name="lokasi" class="form-control" required
-                                    placeholder="Lokasi Saat Ini" value="{{ old('lokasi', $dataTrack->lokasi) }}">
-                            </div>
-
-                            {{-- Status --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Status</label>
-                                <select name="status" class="form-select" required>
-                                    <option value="Dalam Pengiriman" {{ old('status', $dataTrack->status) == 'Dalam Pengiriman' ? 'selected' : '' }}>Dalam Pengiriman</option>
-                                    <option value="Tiba di Tujuan" {{ old('status', $dataTrack->status) == 'Tiba di Tujuan' ? 'selected' : '' }}>Tiba di Tujuan</option>
-                                    <option value="Gagal Dikirim" {{ old('status', $dataTrack->status) == 'Gagal Dikirim' ? 'selected' : '' }}>Gagal Dikirim</option>
-                                </select>
-                            </div>
-
-                            {{-- Tujuan --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Tujuan</label>
-                                <input type="text" id="tujuan" name="tujuan" class="form-control" required
-                                    placeholder="Alamat Tujuan" value="{{ old('tujuan', $dataTrack->tujuan) }}">
-                            </div>
+                        {{-- Estimasi Tiba --}}
+                        <div class="mb-3">
+                            <label class="fw-bold">Estimasi Tiba</label>
+                            <input type="date" id="estimasiTiba" name="estimasiTiba" class="form-control" value="{{ old('estimasiTiba', $dataTrack->estimasiTiba) }}" required>
+                        </div>
 
                             {{-- Tombol Aksi --}}
                             <div class="d-flex justify-content-between">

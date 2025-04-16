@@ -51,7 +51,7 @@ Route::get('/data_paket/editDataPaket/{id}', [MainController::class, 'editPaket'
 Route::post('/data_paket/updatePaket/{id}', [MainController::class, 'updatePaket'])->name('updatePaket');
 
 //data track
-Route::get('/trackingHistoryProses', [MainController::class, 'trackingHistoryProses'])->name('trackingHistoryProses');
+Route::post('/trackingHistory', [MainController::class, 'trackingHistoryProses'])->name('trackingHistory');
 Route::post('/simpanTrack', [MainController::class, 'storeTrack'])->name('simpanTrack');
 Route::get('/data_Track/hapusTrack/{id}', [MainController::class, 'destroyTrack'])->name('hapusTrack');
 Route::get('/data_Track/editDataTrack/{id}', [MainController::class, 'editTrack'])->name('editTrack');    

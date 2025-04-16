@@ -13,57 +13,23 @@
                         <form class="custom-validation" action="{{ route('simpanPaket') }}" method="POST">
                             @csrf
 
-                            {{-- No Resi --}}
+                            {{-- Nama Barang --}}
                             <div class="mb-3">
-                                <label class="fw-bold">No. Resi</label>
-                                <input type="text" id="noResi" name="noResi" class="form-control" required placeholder="Masukkan No. Resi">
-                            </div>
-
-                            {{-- Pengirim --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Pengirim</label>
-                                <input type="text" id="pengirim" name="pengirim" class="form-control" required placeholder="Masukkan Nama Pengirim">
-                            </div>
-
-                            {{-- Penerima --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Penerima</label>
-                                <input type="text" id="penerima" name="penerima" class="form-control" required placeholder="Masukkan Nama Penerima">
+                                <label class="fw-bold">Nama Barang</label>
+                                <input type="text" id="namaBarang" name="namaBarang" class="form-control" required placeholder="Masukkan Nama Penerima">
                             </div>
                             
-                            {{-- Asal --}}
+                            {{-- Jenis Barang --}}
                             <div class="mb-3">
-                                <label class="fw-bold">Asal</label>
-                                <input type="text" id="asal" name="asal" class="form-control" required placeholder="Masukkan Lokasi Asal">
-                            </div>
-
-                            {{-- Tujuan --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Tujuan</label>
-                                <input type="text" id="tujuan" name="tujuan" class="form-control" required placeholder="Masukkan Tujuan">
-                            </div>
-
-                            {{-- Status --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Status</label>
-                                <select id="status" name="status" class="form-select" required>
-                                    <option value="" disabled selected>Pilih Status</option>
-                                    <option value="Dalam Pengiriman">Dalam Pengiriman</option>
-                                    <option value="Tiba di Tujuan">Tiba di Tujuan</option>
-                                    <option value="Gagal Dikirim">Gagal Dikirim</option>
+                                <label class="fw-bold">Jenis Barang</label>
+                                <select id="jenisBarang" name="jenisBarang" class="form-select" required>
+                                    <option value="" disabled selected>Pilih Jenis</option>
+                                    <option value="Elektronik">Elektronik</option>
+                                    <option value="Farmasi">Farmasi</option>
+                                    <option value="Makanan atau Minuman">Makanan atau Minuman</option>
+                                    <option value="Kosmetik">Kosmetik</option>
+                                    <option value="Otomotif">Otomotif</option>
                                 </select>
-                            </div>
-
-                            {{-- Tanggal Update --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Tanggal Update</label>
-                                <input type="date" id="tanggalUpdate" name="tanggalUpdate" class="form-control" required>
-                            </div>
-
-                            {{-- Estimasi Tiba --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Estimasi Tiba</label>
-                                <input type="date" id="estimasiTiba" name="estimasiTiba" class="form-control" required>
                             </div>
 
                             {{-- Tombol Aksi --}}

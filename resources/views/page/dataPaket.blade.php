@@ -22,35 +22,18 @@
                                  style="border-collapse: separate; border-spacing: 0 8px;">
                                     <thead class="table-dark">
                                         <tr style="border-radius: 10px;">
-                                            <th class="rounded-top-start">No. Resi</th>
-                                            <th>Pengirim</th>
-                                            <th>Penerima</th>
-                                            <th>Asal</th>
-                                            <th>Tujuan</th>
-                                            <th>Status</th>
-                                            <th>Tanggal Update</th>
-                                            <th>Estimasi Tiba</th>
+                                            <th>Nama Barang</th>
+                                            <th>Jenis Barang</th>
                                             <th class="rounded-top-end">Aksi</th>
                                         </tr>
                                     </thead>
                                 <tbody>
                                     @foreach ($data_Paket as $item)
                                         <tr>
-                                            <td>{{ $item->noresi }}</td>
-                                            <td>{{ $item->pengirim }}</td>
-                                            <td>{{ $item->penerima }}</td>
-                                            <td>{{ $item->asal }}</td>
-                                            <td>{{ $item->tujuan }}</td>
-                                            <td>
-                                                <span class="badge 
-                                                    {{ $item->status == 'Dalam Pengiriman' ? 'bg-warning' : ($item->status == 'Tiba di Tujuan' ? 'bg-success' : 'bg-danger') }} ">
-                                                    {{ $item->status }}
-                                                </span>
-                                            </td>
-                                            <td>{{ $item->tanggalUpdate }}</td>
-                                            <td>{{ $item->estimasiTiba }}</td>
-                                            <td>
+                                            <td>{{ $item->namaBarang }}</td>
+                                            <td>{{ $item->jenisBarang }}</td>
                                                 {{-- Tombol Edit --}}
+                                                <td>
                                                 <a href="{{ route('editPaket', $item->id) }}" class="btn btn-warning btn-sm">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>

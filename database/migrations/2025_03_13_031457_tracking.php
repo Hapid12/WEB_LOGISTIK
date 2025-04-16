@@ -10,11 +10,9 @@ return new class extends Migration
     {
         Schema::create('data_Track', function (Blueprint $table) {
             $table->id();
-            $table->integer('noresi');
-            $table->timestamp('waktu'); // Perbaiki tipe data
-            $table->string('lokasi');
-            $table->string('tujuan');
-            $table->string('status');
+            $table->string('layanan');
+            $table->date('waktuPengiriman'); // Perbaiki tipe data
+            $table->date('estimasiTiba'); // Perbaiki tipe data
             $table->timestamps();
         });
     }

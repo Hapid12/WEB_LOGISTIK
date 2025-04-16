@@ -21,63 +21,18 @@
                         <form action="{{ route('updatePaket', $dataPaket->id) }}" method="post">
                             @csrf
 
-                            {{-- No Resi --}}
+                            {{-- Nama Barang --}}
                             <div class="mb-3">
-                                <label class="fw-bold">No. Resi</label>
-                                <input type="number" id="noresi" name="noresi" class="form-control" required 
-                                    placeholder="Masukkan No. Resi" value="{{ old('noresi', $dataPaket->noresi) }}">
-                            </div>
-
-                            {{-- Pengirim --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Pengirim</label>
-                                <input type="text" id="pengirim" name="pengirim" class="form-control" required
-                                    placeholder="Nama Pengirim" value="{{ old('pengirim', $dataPaket->pengirim) }}">
+                                <label class="fw-bold">Nama Barang</label>
+                                <input type="text" id="namaBarang" name="namaBarang" class="form-control" required
+                                    placeholder="Nama Barang" value="{{ old('namaBarang', $dataPaket->namaBarang) }}">
                             </div>
 
                             {{-- Penerima --}}
                             <div class="mb-3">
-                                <label class="fw-bold">Penerima</label>
-                                <input type="text" id="penerima" name="penerima" class="form-control" required
-                                    placeholder="Nama Penerima" value="{{ old('penerima', $dataPaket->penerima) }}">
-                            </div>
-                            
-                            {{-- Asal --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Asal</label>
-                                <input type="text" required class="form-control" id="asal" name="asal" 
-                                    placeholder="Alamat Asal" value="{{ old('asal', $dataPaket->asal) }}">
-                            </div>
-                                
-                            {{-- Tujuan --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Tujuan</label>
-                                <input type="text" id="tujuan" name="tujuan" class="form-control" required
-                                    placeholder="Alamat Tujuan" value="{{ old('tujuan', $dataPaket->tujuan) }}">
-                            </div>
-
-                            {{-- Status --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Status</label>
-                                <select name="status" class="form-select" required>
-                                    <option value="Dalam Pengiriman" {{ old('status', $dataPaket->status) == 'Dalam Pengiriman' ? 'selected' : '' }}>Dalam Pengiriman</option>
-                                    <option value="Tiba di Tujuan" {{ old('status', $dataPaket->status) == 'Tiba di Tujuan' ? 'selected' : '' }}>Tiba di Tujuan</option>
-                                    <option value="Gagal Dikirim" {{ old('status', $dataPaket->status) == 'Gagal Dikirim' ? 'selected' : '' }}>Gagal Dikirim</option>
-                                </select>
-                            </div>
-
-                            {{-- Tanggal Update --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Tanggal Update</label>
-                                <input type="date" id="tanggalUpdate" name="tanggalUpdate" class="form-control" required
-                                    value="{{ old('tanggalUpdate', $dataPaket->tanggalUpdate) }}">
-                            </div>
-
-                            {{-- Estimasi Tiba --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Estimasi Tiba</label>
-                                <input type="text" id="estimasiTiba" name="estimasiTiba" class="form-control" required
-                                    placeholder="Perkiraan Tiba" value="{{ old('estimasiTiba', $dataPaket->estimasiTiba) }}">
+                                <label class="fw-bold">Jenis Barang</label>
+                                <input type="text" id="jenisBarang" name="jenisBarang" class="form-control" required
+                                    placeholder="Jenis Barang" value="{{ old('jenisBarang', $dataPaket->jenisBarang) }}">
                             </div>
 
                             {{-- Tombol Aksi --}}

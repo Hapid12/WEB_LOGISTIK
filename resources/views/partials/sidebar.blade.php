@@ -13,6 +13,13 @@
             <i class="ri-home-4-line me-2"></i> <span>Home</span>
         </a>
     </div>
+
+    <div class="menu-items" style="padding: 0 20px;">
+        <a href="{{ route('tabelRiwayat') }}" class="menu-link {{ request()->routeIs('tabelRiwayat') ? 'active' : '' }}">
+            <i class="ri-history-line me-2"></i> <span>Histori</span>
+        </a>
+    </div>
+
     <div class="dropdown">
         <button class="menu-link dropdown-toggle" onclick="toggleDropdown('dataPaketDropdown')">
             <i class="ri-truck-line"></i> <span>Menu Layanan</span>
@@ -25,11 +32,6 @@
             <a href="{{ route('tarifHarga') }}" class="submenu-link">Tarif Harga</a>
         </div>
 </div>
-        <div class="menu-items" style="padding: 0 20px;">
-            <a href="{{ route('tabelRiwayat') }}" class="menu-link {{ request()->routeIs('tabelRiwayat') ? 'active' : '' }}">
-                <i class="ri-history-line me-2"></i> <span>Histori</span>
-            </a>
-        </div>
 </div>
 
 <!-- CSS -->

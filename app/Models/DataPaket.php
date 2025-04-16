@@ -11,13 +11,7 @@ class DataPaket extends Model
     protected $table = "data_Paket";   
     protected $primaryKey = "id";
     protected $fillable = [
-        'noResi',
-        'pengirim',
-        'penerima',
-        'asal',
-        'tujuan',
-        'status',
-        'tanggalUpdate',
-        'estimasiTiba'
+        'namaBarang',
+        'jenisBarang',
     ];
 }

@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_Paket', function (Blueprint $table) {
+        Schema::create('tarifs', function (Blueprint $table) {
             $table->id();
-            $table->string('namaBarang');
-            $table->string('jenisBarang');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_Paket');
+        Schema::dropIfExists('tarifs');
     }
 };

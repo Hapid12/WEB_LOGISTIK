@@ -11,10 +11,8 @@ class TrackingHistory extends Model
     protected $table = "data_Track";   
     protected $primaryKey = "id";
     protected $fillable = [
-        'noresi',
-        'waktu',
-        'lokasi',
-        'status',
-        'tujuan'
+        'layanan',
+        'waktuPengiriman',
+        'estimasiTiba'
     ];
 }
