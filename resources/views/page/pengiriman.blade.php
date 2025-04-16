@@ -16,10 +16,9 @@
                                 <thead class="table-dark">
                                     <tr style="border-radius: 10px;">
                                         <th>No. Resi</th>
-                                        <th>Nama Pengirim</th>
-                                        <th>Alamat Pengirim</th>
-                                        <th>Jenis Layanan</th>
-                                        <th>Lokasi Tujuan</th>
+                                        <th>Waktu</th>
+                                        <th>Lokasi</th>
+                                        <th>Tujuan</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
@@ -27,9 +26,8 @@
                                     @foreach ($data_Track as $item)
                                         <tr>
                                             <td>{{ $item->noresi }}</td>
-                                            <td>{{ $item->pengirim->nama }}</td> <!-- Menampilkan Nama Pengirim -->
-                                            <td>{{ $item->pengirim->alamat }}</td> <!-- Menampilkan Alamat Pengirim -->
-                                            <td>{{ $item->jenis_layanan }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->waktu)->format('d-m-Y H:i') }}</td>
+                                            <td>{{ $item->lokasi }}</td>
                                             <td>{{ $item->tujuan }}</td>
                                             <td>
                                                 <span class="badge 

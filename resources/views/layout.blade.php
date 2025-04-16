@@ -24,12 +24,12 @@
 
 {{-- topbar --}}
 @include('partials.topbar')
-
-
+</div>
 
 <!-- ========== Left Sidebar Start ========== -->
 @include('partials.sidebar')
 <!-- Left Sidebar End -->
+
 
 <div class="main-content">
     <div class="page-content">

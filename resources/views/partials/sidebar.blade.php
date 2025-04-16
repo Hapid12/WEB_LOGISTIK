@@ -12,22 +12,24 @@
         <a href="{{ route('home') }}" class="menu-link {{ request()->routeIs('home') ? 'active' : '' }}">
             <i class="ri-home-4-line me-2"></i> <span>Home</span>
         </a>
-        <a href="{{ route('dataPaket') }}" class="menu-link {{ request()->routeIs('dataPaket') ? 'active' : '' }}">
-            <i class="ri-database-2-line me-2"></i> <span>Data Paket</span>
-        </a>
-        <a href="{{ route('trackingHistory') }}" class="menu-link {{ request()->routeIs('trackingHistory') ? 'active' : '' }}">
-            <i class="ri-map-pin-line me-2"></i> <span>Tracking History</span>
-        </a>
-        <a href="{{ route('pengiriman') }}" class="menu-link {{ request()->routeIs('pengirim') ? 'active' : '' }}">
-            <i class="ri-truck-line me-2"></i> <span>Pengirim</span>
-        </a>
-        <a href="{{ route('tarifHarga') }}" class="menu-link {{ request()->routeIs('tarifHarga') ? 'active' : '' }}">
-            <i class="ri-money-dollar-circle-line"></i> <span>Tarif Harga</span>
-        </a>
-        <a href="{{ route('tabelRiwayat') }}" class="menu-link {{ request()->routeIs('tabelRiwayat') ? 'active' : '' }}">
-            <i class="ri-time-line"></i> <span>Tabel Riwayat</span>
-        </a>
     </div>
+    <div class="dropdown">
+        <button class="menu-link dropdown-toggle" onclick="toggleDropdown('dataPaketDropdown')">
+            <i class="ri-truck-line"></i> <span>Menu Layanan</span>
+            <i class="ri-arrow-down-s-line" style="margin-left:auto;"></i>
+        </button>
+        <div class="dropdown-menu" id="dataPaketDropdown">
+            <a href="{{ route('dataPaket') }}" class="submenu-link">Data Paket</a>
+            <a href="{{ route('trackingHistory') }}" class="submenu-link">Tracking History</a>
+            <a href="{{ route('pengiriman') }}" class="submenu-link">Pengirim</a>
+            <a href="{{ route('tarifHarga') }}" class="submenu-link">Tarif Harga</a>
+        </div>
+</div>
+        <div class="menu-items" style="padding: 0 20px;">
+            <a href="{{ route('tabelRiwayat') }}" class="menu-link {{ request()->routeIs('tabelRiwayat') ? 'active' : '' }}">
+                <i class="ri-history-line me-2"></i> <span>Histori</span>
+            </a>
+        </div>
 </div>
 
 <!-- CSS -->
@@ -44,6 +46,7 @@
         text-decoration: none;
         background-color: transparent;
         transition: all 0.3s ease;
+        width: 180px;
     }
 
     .menu-link:hover {
@@ -56,7 +59,68 @@
         color: black;
         box-shadow: inset 4px 0 0 #000;
     }
-</style>
 
+    .dropdown {
+        position: relative;
+        width: 180px;
+    }
+
+    .dropdown-toggle {
+        cursor: pointer;
+        border: none;
+        background: none;
+        outline: none;
+    }
+
+    .dropdown-menu {
+    display: none;
+    flex-direction: column;
+    width: 180px; /* Biar selebar tombol utamanya */
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.dropdown-menu.show {
+    display: flex;
+}
+
+    .dropdown:hover .dropdown-menu {
+        display: flex;
+    }
+
+    .submenu-link {
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 4px 0;
+    transition: all 0.2s ease;
+    width: 100%; /* Tambahan biar penuh */
+    box-sizing: border-box; /* Supaya padding gak melebihi */
+    }
+
+    .submenu-link:hover {
+        background-color: #dcdcdc;
+        transform: translateX(5px);
+        max-height:fit-content;
+    }
+
+    .submenu-link.active {
+        background-color: white;
+        color: black;
+        font-weight: 600;
+        box-shadow: inset 3px 0 0 #000;
+    }
+</style>
+<script>
+  function toggleDropdown(id) {
+        const dropdown = document.getElementById(id);
+        dropdown.classList.toggle('show');
+    }
+</script>
 <!-- Remix Icon (CDN) -->
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
