@@ -33,15 +33,96 @@
                             </div>
 
                             {{-- Alamat Awal --}}
-                            <div class="mb-3">
-                                <label class="fw-bold">Alamat Awal</label>
-                                <input type="text" id="alamatAwal" name="alamatAwal" class="form-control" required placeholder="Masukkan Nama Penerima">
-                            </div>
+                        <div class="mb-3">
+                            <label class="fw-bold">Alamat Awal</label>
+                            <select id="alamatAwal" name="alamatAwal" class="form-control" required>
+                                <option value="" disabled selected>-- Pilih Provinsi / Ibu Kota --</option>
+                                <option value="Aceh">Banda Aceh (Aceh)</option>
+                                <option value="Sumatera Utara">Medan (Sumatera Utara)</option>
+                                <option value="Sumatera Barat">Padang (Sumatera Barat)</option>
+                                <option value="Riau">Pekanbaru (Riau)</option>
+                                <option value="Kepulauan Riau">Tanjung Pinang (Kepulauan Riau)</option>
+                                <option value="Jambi">Jambi (Jambi)</option>
+                                <option value="Sumatera Selatan">Palembang (Sumatera Selatan)</option>
+                                <option value="Bengkulu">Bengkulu (Bengkulu)</option>
+                                <option value="Lampung">Bandar Lampung (Lampung)</option>
+                                <option value="Bangka Belitung">Pangkal Pinang (Bangka Belitung)</option>
+                                <option value="DKI Jakarta">Jakarta (DKI Jakarta)</option>
+                                <option value="Jawa Barat">Bandung (Jawa Barat)</option>
+                                <option value="Banten">Serang (Banten)</option>
+                                <option value="Jawa Tengah">Semarang (Jawa Tengah)</option>
+                                <option value="DI Yogyakarta">Yogyakarta (DI Yogyakarta)</option>
+                                <option value="Jawa Timur">Surabaya (Jawa Timur)</option>
+                                <option value="Bali">Denpasar (Bali)</option>
+                                <option value="Nusa Tenggara Barat">Mataram (Nusa Tenggara Barat)</option>
+                                <option value="Nusa Tenggara Timur">Kupang (Nusa Tenggara Timur)</option>
+                                <option value="Kalimantan Barat">Pontianak (Kalimantan Barat)</option>
+                                <option value="Kalimantan Tengah">Palangka Raya (Kalimantan Tengah)</option>
+                                <option value="Kalimantan Selatan">Banjarmasin (Kalimantan Selatan)</option>
+                                <option value="Kalimantan Timur">Samarinda (Kalimantan Timur)</option>
+                                <option value="Kalimantan Utara">Tanjung Selor (Kalimantan Utara)</option>
+                                <option value="Sulawesi Utara">Manado (Sulawesi Utara)</option>
+                                <option value="Gorontalo">Gorontalo (Gorontalo)</option>
+                                <option value="Sulawesi Tengah">Palu (Sulawesi Tengah)</option>
+                                <option value="Sulawesi Barat">Mamuju (Sulawesi Barat)</option>
+                                <option value="Sulawesi Selatan">Makassar (Sulawesi Selatan)</option>
+                                <option value="Sulawesi Tenggara">Kendari (Sulawesi Tenggara)</option>
+                                <option value="Maluku">Ambon (Maluku)</option>
+                                <option value="Maluku Utara">Sofifi (Maluku Utara)</option>
+                                <option value="Papua">Jayapura (Papua)</option>
+                                <option value="Papua Barat">Manokwari (Papua Barat)</option>
+                                <option value="Papua Selatan">Merauke (Papua Selatan)</option>
+                                <option value="Papua Tengah">Nabire (Papua Tengah)</option>
+                                <option value="Papua Pegunungan">Wamena (Papua Pegunungan)</option>
+                                <option value="Papua Barat Daya">Sorong (Papua Barat Daya)</option>
+                            </select>
+                        </div>
+
 
                             {{-- Alamat Akhir --}}
                             <div class="mb-3">
                                 <label class="fw-bold">Alamat Akhir</label>
-                                <input type="text" id="alamatAkhir" name="alamatAkhir" class="form-control" required placeholder="Masukkan Nama Penerima">
+                                <select id="alamatAkhir" name="alamatAkhir" class="form-control" required>
+                                    <option value="" disabled selected>-- Pilih Provinsi / Ibu Kota --</option>
+                                    <option value="Aceh">Banda Aceh (Aceh)</option>
+                                    <option value="Sumatera Utara">Medan (Sumatera Utara)</option>
+                                    <option value="Sumatera Barat">Padang (Sumatera Barat)</option>
+                                    <option value="Riau">Pekanbaru (Riau)</option>
+                                    <option value="Kepulauan Riau">Tanjung Pinang (Kepulauan Riau)</option>
+                                    <option value="Jambi">Jambi (Jambi)</option>
+                                    <option value="Sumatera Selatan">Palembang (Sumatera Selatan)</option>
+                                    <option value="Bengkulu">Bengkulu (Bengkulu)</option>
+                                    <option value="Lampung">Bandar Lampung (Lampung)</option>
+                                    <option value="Bangka Belitung">Pangkal Pinang (Bangka Belitung)</option>
+                                    <option value="DKI Jakarta">Jakarta (DKI Jakarta)</option>
+                                    <option value="Jawa Barat">Bandung (Jawa Barat)</option>
+                                    <option value="Banten">Serang (Banten)</option>
+                                    <option value="Jawa Tengah">Semarang (Jawa Tengah)</option>
+                                    <option value="DI Yogyakarta">Yogyakarta (DI Yogyakarta)</option>
+                                    <option value="Jawa Timur">Surabaya (Jawa Timur)</option>
+                                    <option value="Bali">Denpasar (Bali)</option>
+                                    <option value="Nusa Tenggara Barat">Mataram (Nusa Tenggara Barat)</option>
+                                    <option value="Nusa Tenggara Timur">Kupang (Nusa Tenggara Timur)</option>
+                                    <option value="Kalimantan Barat">Pontianak (Kalimantan Barat)</option>
+                                    <option value="Kalimantan Tengah">Palangka Raya (Kalimantan Tengah)</option>
+                                    <option value="Kalimantan Selatan">Banjarmasin (Kalimantan Selatan)</option>
+                                    <option value="Kalimantan Timur">Samarinda (Kalimantan Timur)</option>
+                                    <option value="Kalimantan Utara">Tanjung Selor (Kalimantan Utara)</option>
+                                    <option value="Sulawesi Utara">Manado (Sulawesi Utara)</option>
+                                    <option value="Gorontalo">Gorontalo (Gorontalo)</option>
+                                    <option value="Sulawesi Tengah">Palu (Sulawesi Tengah)</option>
+                                    <option value="Sulawesi Barat">Mamuju (Sulawesi Barat)</option>
+                                    <option value="Sulawesi Selatan">Makassar (Sulawesi Selatan)</option>
+                                    <option value="Sulawesi Tenggara">Kendari (Sulawesi Tenggara)</option>
+                                    <option value="Maluku">Ambon (Maluku)</option>
+                                    <option value="Maluku Utara">Sofifi (Maluku Utara)</option>
+                                    <option value="Papua">Jayapura (Papua)</option>
+                                    <option value="Papua Barat">Manokwari (Papua Barat)</option>
+                                    <option value="Papua Selatan">Merauke (Papua Selatan)</option>
+                                    <option value="Papua Tengah">Nabire (Papua Tengah)</option>
+                                    <option value="Papua Pegunungan">Wamena (Papua Pegunungan)</option>
+                                    <option value="Papua Barat Daya">Sorong (Papua Barat Daya)</option>
+                                </select>
                             </div>
 
                             {{-- Tombol Aksi --}}
