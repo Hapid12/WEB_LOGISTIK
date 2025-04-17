@@ -42,7 +42,7 @@
 
         {{-- Tabel Data --}}
         <div class="bg-white rounded-xl shadow p-6">
-            <h2 class="text-xl font-semibold mb-4">History</h2>
+            <h2 class="text-xl font-semibold mb-4">Pengiriman Terbaru</h2>
             <div class="overflow-x-auto">
                 <table id="datatable" class="min-w-full divide-y divide-gray-200 text-sm text-center table-auto">
                     <thead class="bg-gray-800 text-white">
@@ -51,6 +51,8 @@
                             <th class="px-4 py-2 text-center">Nama Barang</th>
                             <th class="px-4 py-2 text-center">Jenis Barang</th>
                             <th class="px-4 py-2 text-center">Status</th>
+                            <th class="px-4 py-2 text-center">Alamat Awal</th>
+                            <th class="px-4 py-2 text-center">Alamat Akhir</th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-800">
@@ -60,6 +62,8 @@
                             <td>{{ $item->namaBarang }}</td>
                             <td>{{ $item->jenisBarang }}</td> 
                             <td>{{ $item->status }}</td> 
+                            <td>{{ $item->alamatAwal }}</td> 
+                            <td>{{ $item->alamatAkhir }}</td> 
                         </tr>
                         @endforeach --}}
                     </tbody>
