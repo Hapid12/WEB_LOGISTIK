@@ -6,40 +6,62 @@
             <div class="col-12">
                 <div class="card shadow-lg border-0 rounded">
                     <div class="card-body">
-                        <h1 class="card-title text-center text-primary fw-bold">Informasi Pengirim</h1>
+                        <h1 class="card-title text-center text-primary fw-bold">Informasi Pengiriman</h1>
                         <hr>
-
-                        {{-- Tabel Pengirim --}}
+                        <div class="d-flex justify-content-end mb-3">
+                            <a href="{{ route('pengirimanProses') }}" class="btn btn-success">
+                                <i class="fas fa-plus"></i> Tambah Data
+                            </a>
+                        </div>
+                        {{-- Tabel Pengiriman --}}
                         <div class="table-responsive">
-                            <table id="datatable" class="table table-striped table-hover table-bordered align-middle text-center"
-                             style="border-collapse: separate; border-spacing: 0 8px;">
+                            <table id="datatable"
+                                class="table table-striped table-hover table-bordered align-middle text-center"
+                                style="border-collapse: separate; border-spacing: 0 8px;">
                                 <thead class="table-dark">
                                     <tr style="border-radius: 10px;">
                                         <th>No. Resi</th>
-                                        <th>Waktu</th>
-                                        <th>Lokasi</th>
+                                        <th>Nama Penerima</th>
+                                        <th>Alamat</th>
                                         <th>Tujuan</th>
-                                        <th>Status</th>
+                                        <th>Layanan</th>
+                                        <th>Berat (kg)</th>
+                                        <th>Total Harga</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data_Track as $item)
+                                    @foreach ($data_Pengiriman as $item)
                                         <tr>
                                             <td>{{ $item->noresi }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($item->waktu)->format('d-m-Y H:i') }}</td>
-                                            <td>{{ $item->lokasi }}</td>
-                                            <td>{{ $item->tujuan }}</td>
+                                            <td>{{ $item->nama_penerima }}</td>
+                                            <td>{{ Str::limit($item->alamat_penerima, 30) }}</td>
+                                            <td>{{ $item->tujuan == 'dalam_kota' ? 'Dalam Kota' : 'Luar Kota' }}</td>
+                                            <td>{{ ucfirst($item->layanan) }}</td>
+                                            <td>{{ number_format($item->berat, 2) }}</td>
+                                            <td>Rp {{ number_format($item->total_harga, 0, ',', '.') }}</td>
                                             <td>
-                                                <span class="badge 
-                                                    {{ $item->status == 'Dalam Pengiriman' ? 'bg-warning' : ($item->status == 'Tiba di Tujuan' ? 'bg-success' : 'bg-danger') }}">
-                                                    {{ $item->status }}
-                                                </span>
+                                                <div class="d-flex justify-content-center gap-2">
+                                                    <a href="{{ route('pengiriman.edit', $item->id) }}"
+                                                        class="btn btn-sm btn-primary">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <form action="{{ route('pengiriman.destroy', $item->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                            onclick="return confirm('Hapus data ini?')">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div> {{-- End Table Responsive --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,12 +69,11 @@
     </div>
 
     <style>
-        /* Border untuk semua sisi td dan th */
-        #datatable th, #datatable td {
+        #datatable th,
+        #datatable td {
             border: 1px solid #dee2e6;
         }
 
-        /* Header lebih tebal dan rapi */
         #datatable thead th {
             background-color: #1e293b;
             color: white;
@@ -60,17 +81,15 @@
             vertical-align: middle;
         }
 
-        /* Hover row efek */
         #datatable tbody tr:hover {
             background-color: #f1f5f9;
         }
 
-        /* Biar cell gak terlalu dempet */
-        #datatable td, #datatable th {
+        #datatable td,
+        #datatable th {
             padding: 12px 8px;
         }
 
-        /* Responsive biar ga mepet */
         .table-responsive {
             overflow-x: auto;
         }
@@ -78,7 +97,7 @@
 
     {{-- DataTables Script --}}
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#datatable').DataTable({
                 "language": {
                     "lengthMenu": "Tampilkan _MENU_ data per halaman",
@@ -90,7 +109,12 @@
                         "next": "Selanjutnya",
                         "previous": "Sebelumnya"
                     }
-                }
+                },
+                "columnDefs": [{
+                        "orderable": false,
+                        "targets": [7]
+                    } // Disable sorting for action column
+                ]
             });
         });
     </script>

@@ -56,3 +56,10 @@ Route::post('/simpanTrack', [MainController::class, 'storeTrack'])->name('simpan
 Route::get('/data_Track/hapusTrack/{id}', [MainController::class, 'destroyTrack'])->name('hapusTrack');
 Route::get('/data_Track/editDataTrack/{id}', [MainController::class, 'editTrack'])->name('editTrack');    
 Route::post('/data_Track/updateTrack/{id}', [MainController::class, 'updateTrack'])->name('updateTrack');
+
+//data pengiriman
+Route::get('/pengirimanProses', [MainController::class, 'pengirimanProses'])->name('pengirimanProses');
+Route::post('/simpanPengiriman', [MainController::class, 'simpanPengiriman'])->name('simpanPengiriman');
+Route::get('/data_Pengiriman/hapusPengiriman/{id}', [MainController::class, 'destroyPengiriman'])->name('hapusPengiriman');
+Route::get('/data_Pengiriman/editDataPengiriman/{id}', [MainController::class, 'editPengiriman'])->name('editPengiriman');    
+Route::post('/data_Pengiriman/updatePengiriman/{id}', [MainController::class, 'updatePengiriman'])->name('updatePengiriman');
