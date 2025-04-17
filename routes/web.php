@@ -67,3 +67,4 @@ Route::get('/data_Pengiriman/editDataPengiriman/{id}', [PengirimanController::cl
 Route::post('/data_Pengiriman/updatePengiriman/{id}', [PengirimanController::class, 'updatePengiriman'])->name('updatePengiriman');
 
 Route::get('/uas', [MainController::class, 'uas'])->name('uas');
+Route::post('/storeUas', [MainController::class, 'storeUas'])->name('storeUas');

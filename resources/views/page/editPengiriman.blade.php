@@ -18,14 +18,14 @@
                         @endif
 
                         {{-- Form Edit Paket --}}
-                        <form action="{{ route('updatePengiriman', $data_Pengiriman->id) }}" method="post">
+                        <form action="{{ route('updatePengiriman', $dataPengirim->id) }}" method="post">
                             @csrf
 
                             {{-- No Resi --}}
                             <div class="mb-3">
                                 <label class="fw-bold">No. Resi</label>
                                 <input type="text" id="noresi" name="noresi" class="form-control"
-                                    value="{{ old('noresi', $data_Pengiriman->noresi) }}" required
+                                    value="{{ old('noresi', $dataPengirim->noresi) }}" required
                                     placeholder="Masukkan No. resi">
                             </div>
 
@@ -33,7 +33,7 @@
                             <div class="mb-3">
                                 <label class="fw-bold">Penerima</label>
                                 <input type="text" id="penerima" name="penerima" class="form-control"
-                                    value="{{ old('penerima', $data_Pengiriman->penerima) }}" required
+                                    value="{{ old('penerima', $dataPengirim->penerima) }}" required
                                     placeholder="Masukkan Nama Penerima">
                             </div>
 
@@ -42,12 +42,11 @@
                                 <label class="fw-bold">Tujuan</label>
                                 <select id="tujuan" name="tujuan" class="form-select" required>
                                     <option value="" disabled selected>Pilih Tujuan</option>
-                                    <option value="Luar Kota"
-                                        {{ $data_Pengiriman->tujuan == 'Luar Kota' ? 'selected' : '' }}>
+                                    <option value="Luar Kota" {{ $dataPengirim->tujuan == 'Luar Kota' ? 'selected' : '' }}>
                                         Luar
                                         Kota</option>
                                     <option value="Dalam Kota"
-                                        {{ $data_Pengiriman->tujuan == 'Dalam Kota' ? 'selected' : '' }}>
+                                        {{ $dataPengirim->tujuan == 'Dalam Kota' ? 'selected' : '' }}>
                                         Dalam
                                         Kota</option>
                                 </select>
@@ -58,12 +57,12 @@
                                 <label class="fw-bold">Layanan</label>
                                 <select id="layanan" name="layanan" class="form-select" required>
                                     <option value="" disabled selected>Pilih Layanan</option>
-                                    <option value="Udara" {{ $data_Pengiriman->layanan == 'Udara' ? 'selected' : '' }}>
+                                    <option value="Udara" {{ $dataPengirim->layanan == 'Udara' ? 'selected' : '' }}>
                                         Udara
                                     </option>
-                                    <option value="Laut" {{ $data_Pengiriman->layanan == 'Laut' ? 'selected' : '' }}>Laut
+                                    <option value="Laut" {{ $dataPengirim->layanan == 'Laut' ? 'selected' : '' }}>Laut
                                     </option>
-                                    <option value="Darat" {{ $data_Pengiriman->layanan == 'Darat' ? 'selected' : '' }}>
+                                    <option value="Darat" {{ $dataPengirim->layanan == 'Darat' ? 'selected' : '' }}>
                                         Darat
                                     </option>
                                 </select>
@@ -73,13 +72,13 @@
                             <div class="mb-3">
                                 <label class="fw-bold">Berat</label>
                                 <input type="text" id="berat" name="berat" class="form-control"
-                                    value="{{ old('berat', $data_Pengiriman->berat) }}" required
+                                    value="{{ old('berat', $dataPengirim->berat) }}" required
                                     placeholder="Masukkan Nama Penerima">
                             </div>
 
                             {{-- Tombol Aksi --}}
                             <div class="d-flex justify-content-between">
-                                <a href="{{ route('dataPaket') }}" class="btn btn-secondary">
+                                <a href="{{ route('pengiriman') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left"></i> Kembali
                                 </a>
                                 <button type="submit" class="btn btn-primary">

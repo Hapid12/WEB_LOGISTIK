@@ -75,9 +75,9 @@ class PengirimanController extends Controller
 
         if ($data_Pengiriman) {
             $data = [
-                'title' => 'Edit Data Paket',
-                'formTitle' => 'Edit Data Paket',
-                'dataPaket' => $data_Pengiriman
+                'title' => 'Edit Data Pengirim',
+                'formTitle' => 'Edit Data Pengirim',
+                'dataPengirim' => $data_Pengiriman
             ];
             return view('page/editPengiriman', $data);
         }
@@ -94,7 +94,7 @@ class PengirimanController extends Controller
             'tujuan' => 'required|string',
             'layanan' => 'required|string',
             'berat' => 'required|integer',
-            'total_harga' => 'required|float'
+            // 'total_harga' => 'required|float'
         ]);
 
         $data_Pengiriman = Pengiriman::find($id);

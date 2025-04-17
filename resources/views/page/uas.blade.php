@@ -27,7 +27,7 @@
 
                             <div class="mb-3">
                                 <label class="fw-bold">Jobdesk</label>
-                                <textarea name="namaAnggota" id="namaAnggota" placeholder="jobdesk" cols="30" rows="10"></textarea>
+                                <textarea name="jobdesk" id="jobdesk" placeholder="jobdesk" cols="30" rows="10"></textarea>
                             </div>
 
                             {{-- Tombol Aksi --}}

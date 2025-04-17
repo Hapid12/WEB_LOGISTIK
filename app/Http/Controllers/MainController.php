@@ -220,29 +220,20 @@ class MainController extends Controller
         return view('page/uas', $data);
     }
 
-    function datauas()
-    {
-        $data = array(
-            'title' => 'Kirim Data Uas',
-
-        );
-        return view('page/uas', $data);
-    }
-
     public function storeUas(Request $request)
     {
         $request->validate([
-            'nomor_kelompok' => 'required|integer',
-            'nama_anggota' => 'required|string',
+            'nomorkelompok' => 'required|integer',
+            'namaAnggota' => 'required|string',
             'jobdesk' => 'required|string'
 
         ]);
 
         Kelompok::create([
-            'nomor_kelompok' => $request->nomor_kelompok,
-            'nama_anggota' => $request->nama_anggota,
+            'nomorkelompok' => $request->nomorKelompok,
+            'namaAnggota' => $request->namaAnggota,
             'jobdesk' => $request->jobdesk
         ]);
-        return redirect('dataUas');
+        return redirect('uas');
     }
 }

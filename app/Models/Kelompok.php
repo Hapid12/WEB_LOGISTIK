@@ -11,8 +11,8 @@ class Kelompok extends Model
     protected $table = "kelompok";   
     protected $primaryKey = "id";
     protected $fillable = [
-        'nomor_kelompok',
-        'nama_anggota',
+        'nomorKelompok',
+        'namaAnggota',
         'jobdesk',
     ];
 }

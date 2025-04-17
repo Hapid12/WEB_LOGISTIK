@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('kelompok', function (Blueprint $table) {
             $table->id();
-            $table->integer('nomor_kelompok');
-            $table->string('nama_anggota');
+            $table->integer('nomorKelompok');
+            $table->string('namaAnggota');
             $table->string('jobdesk');
             $table->timestamps();
         });
