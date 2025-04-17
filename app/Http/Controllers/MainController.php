@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataPaket;
+use App\Models\Kelompok;
 use App\Models\Pengiriman;
 use App\Models\TrackingHistory;
 use Illuminate\Http\Request;
@@ -51,7 +52,6 @@ class MainController extends Controller
         ]);
 
         DataPaket::create([
-            'noResi' => $request->noResi,
             'namaBarang' => $request->namaBarang,
             'jenisBarang' => $request->jenisBarang,
         ]);
@@ -188,146 +188,6 @@ class MainController extends Controller
         return redirect()->route('trackingHistory')->with('error', 'Data tidak ditemukan!');
     }
 
-    // Fungsi untuk model pengirim
-    public function pengiriman()
-    {
-        $data = [
-            'title' => 'Pengirim',
-        ];
-
-        $data_Pengiriman = Pengiriman::latest()->get();
-        return view('page\pengiriman', compact('data_Pengiriman'), $data);
-    }
-
-    // Simpan Pengiriman
-    public function simpanPengiriman(Request $request)
-    {
-        $validated = $request->validate([
-            'noresi' => 'required|string|max:255|unique:data_Pengiriman,noresi',
-            'nama_penerima' => 'required|string|max:255',
-            'alamat_penerima' => 'required|string|max:500',
-            'berat' => 'required|numeric|min:0.1|max:100',
-            'tujuan' => 'required|in:dalam_kota,luar_kota',
-            'layanan' => 'required|in:reguler,kilat'
-        ]);
-
-        try {
-            $pengiriman = new Pengiriman();
-            $pengiriman->fill($validated);
-            $pengiriman->status = 'Dalam Pengiriman'; // Set default status
-            $pengiriman->total_harga = $this->calculatePrice(
-                $pengiriman->berat,
-                $pengiriman->tujuan,
-                $pengiriman->layanan
-            );
-
-            $pengiriman->save();
-
-            return redirect()->route('pengiriman')
-                ->with('success', 'Pengiriman berhasil ditambahkan! No. Resi: ' . $pengiriman->noresi);
-        } catch (\Exception $e) {
-            return back()->withInput()
-                ->with('error', 'Gagal menyimpan: ' . $e->getMessage());
-        }
-    }
-
-    private function calculatePrice($berat, $tujuan, $layanan)
-    {
-        $tarifDasar = 10000;
-        $tarifPerKg = 5000;
-
-        if ($tujuan == 'luar_kota') $tarifDasar += 5000;
-        if ($layanan == 'kilat') $tarifDasar += 10000;
-
-        return $tarifDasar + ($berat * $tarifPerKg);
-    }
-
-    // Form tambah Pengiriman
-    public function pengirimanProses()
-    {
-        return view('page/pengirimanProses', ['title' => 'Kirim Pengiriman']);
-    }
-
-    // Hapus data Pengiriman
-    public function destroyPengiriman($id)
-    {
-        $data_Pengiriman = Pengiriman::find($id);
-
-        if ($data_Pengiriman) {
-            $data_Pengiriman->delete();
-            return redirect()->route('pengiriman')->with('success', 'Data berhasil dihapus!');
-        }
-
-        return redirect()->route('pengiriman')->with('error', 'Data tidak ditemukan');
-    }
-
-    // Edit data Pengiriman
-    public function editPengiriman($id)
-    {
-        $data_Pengiriman = Pengiriman::find($id); // Bukan TrackingHistory
-
-        if (!$data_Pengiriman) {
-            return redirect()->route('pengiriman')
-                ->with('error', 'Data tidak ditemukan!');
-        }
-
-        return view('page.editPengiriman', [
-            'title' => 'Edit Data Pengiriman',
-            'formTitle' => 'Edit Data Pengiriman',
-            'dataPengiriman' => $data_Pengiriman,
-            'tujuanOptions' => ['dalam_kota' => 'Dalam Kota', 'luar_kota' => 'Luar Kota'],
-            'layananOptions' => ['reguler' => 'Reguler', 'kilat' => 'Kilat'],
-            'statusOptions' => [
-                'Dalam Pengiriman' => 'Dalam Pengiriman',
-                'Tiba di Tujuan' => 'Tiba di Tujuan',
-                'Dibatalkan' => 'Dibatalkan'
-            ]
-        ]);
-    }
-
-    // Update data Pengiriman
-    public function updatePengiriman(Request $request, $id)
-    {
-        // Validasi data - sama dengan fungsi simpanPengiriman plus status
-        $validatedData = $request->validate([
-            'noresi' => 'required|string|max:255|unique:data_Pengiriman,noresi,' . $id,
-            'nama_penerima' => 'required|string|max:255',
-            'alamat_penerima' => 'required|string',
-            'berat' => 'required|numeric|min:0.1',
-            'tujuan' => 'required|in:dalam_kota,luar_kota',
-            'layanan' => 'required|in:reguler,kilat',
-            'status' => 'required|in:Dalam Pengiriman,Tiba di Tujuan,Dibatalkan'
-        ], [
-            'noresi.unique' => 'Nomor resi sudah digunakan oleh pengiriman lain',
-            'berat.min' => 'Berat minimal harus 0.1 kg'
-        ]);
-
-        try {
-            // Cari data pengiriman
-            $pengiriman = Pengiriman::findOrFail($id);
-
-            // Update data
-            $pengiriman->fill($validatedData);
-
-            // Hitung ulang total harga
-            $pengiriman->total_harga = $pengiriman->hitungHarga();
-
-            $pengiriman->save();
-
-            return redirect()
-                ->route('pengiriman')
-                ->with('success', 'Data pengiriman ' . $pengiriman->noresi . ' berhasil diperbarui!');
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            return redirect()
-                ->route('pengiriman')
-                ->with('error', 'Data pengiriman tidak ditemukan!');
-        } catch (\Exception $e) {
-            return back()
-                ->withInput()
-                ->with('error', 'Gagal memperbarui data: ' . $e->getMessage());
-        }
-    }
-
     // Fungsi untuk model tarif harga
     public function tarifHarga()
     {
@@ -348,5 +208,41 @@ class MainController extends Controller
 
         $data_Track = TrackingHistory::latest()->get();
         return view('page\tabelRiwayat', compact('data_Track'), $data);
+    }
+
+
+    function uas()
+    {
+        $data = array(
+            'title' => 'uas',
+
+        );
+        return view('page/uas', $data);
+    }
+
+    function datauas()
+    {
+        $data = array(
+            'title' => 'Kirim Data Uas',
+
+        );
+        return view('page/uas', $data);
+    }
+
+    public function storeUas(Request $request)
+    {
+        $request->validate([
+            'nomor_kelompok' => 'required|integer',
+            'nama_anggota' => 'required|string',
+            'jobdesk' => 'required|string'
+
+        ]);
+
+        Kelompok::create([
+            'nomor_kelompok' => $request->nomor_kelompok,
+            'nama_anggota' => $request->nama_anggota,
+            'jobdesk' => $request->jobdesk
+        ]);
+        return redirect('dataUas');
     }
 }

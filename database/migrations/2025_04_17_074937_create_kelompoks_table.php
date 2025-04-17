@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('data_Pengiriman', function (Blueprint $table) {
-            $table->integer('total_harga')->nullable();
+        Schema::create('kelompok', function (Blueprint $table) {
+            $table->id();
+            $table->integer('nomor_kelompok');
+            $table->string('nama_anggota');
+            $table->string('jobdesk');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('data_Pengiriman', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('kelompok');
     }
 };

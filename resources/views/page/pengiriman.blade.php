@@ -6,27 +6,25 @@
             <div class="col-12">
                 <div class="card shadow-lg border-0 rounded">
                     <div class="card-body">
-                        <h1 class="card-title text-center text-primary fw-bold">Informasi Pengiriman</h1>
+                        <h1 class="card-title text-center text-primary fw-bold">Data Pengiriman</h1>
                         <hr>
-                        <div class="d-flex justify-content-end mb-3">
+
+                        <div class="d-flex justify-content-between mb-3">
                             <a href="{{ route('pengirimanProses') }}" class="btn btn-success">
                                 <i class="fas fa-plus"></i> Tambah Data
                             </a>
                         </div>
-                        {{-- Tabel Pengiriman --}}
+
                         <div class="table-responsive">
-                            <table id="datatable"
-                                class="table table-striped table-hover table-bordered align-middle text-center"
-                                style="border-collapse: separate; border-spacing: 0 8px;">
+                            <table id="datatable" class="table table-striped table-hover table-bordered align-middle">
                                 <thead class="table-dark">
-                                    <tr style="border-radius: 10px;">
+                                    <tr>
                                         <th>No. Resi</th>
-                                        <th>Nama Penerima</th>
-                                        <th>Alamat</th>
+                                        <th>Penerima</th>
                                         <th>Tujuan</th>
                                         <th>Layanan</th>
                                         <th>Berat (kg)</th>
-                                        <th>Total Harga</th>
+
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -34,28 +32,23 @@
                                     @foreach ($data_Pengiriman as $item)
                                         <tr>
                                             <td>{{ $item->noresi }}</td>
-                                            <td>{{ $item->nama_penerima }}</td>
-                                            <td>{{ Str::limit($item->alamat_penerima, 30) }}</td>
-                                            <td>{{ $item->tujuan == 'dalam_kota' ? 'Dalam Kota' : 'Luar Kota' }}</td>
-                                            <td>{{ ucfirst($item->layanan) }}</td>
-                                            <td>{{ number_format($item->berat, 2) }}</td>
-                                            <td>Rp {{ number_format($item->total_harga, 0, ',', '.') }}</td>
+                                            <td>{{ $item->penerima }}</td>
+                                            <td>{{ $item->tujuan }}</td>
+                                            <td>{{ $item->layanan }}</td>
+                                            <td>{{ $item->berat }}</td>
+
                                             <td>
-                                                <div class="d-flex justify-content-center gap-2">
-                                                    <a href="{{ route('pengiriman.edit', $item->id) }}"
-                                                        class="btn btn-sm btn-primary">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <form action="{{ route('pengiriman.destroy', $item->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger"
-                                                            onclick="return confirm('Hapus data ini?')">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                                <a href="{{ route('editPengiriman', $item->id) }}"
+                                                    class="btn btn-warning btn-sm">
+                                                    <i class="fas fa-edit"></i> Edit
+                                                </a>
+
+                                                {{-- Tombol Hapus --}}
+                                                <a href="{{ route('hapusPengiriman', $item->id) }}"
+                                                    class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                                    <i class="fas fa-trash"></i> Hapus
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -69,33 +62,20 @@
     </div>
 
     <style>
-        #datatable th,
-        #datatable td {
-            border: 1px solid #dee2e6;
+        #datatable th {
+            white-space: nowrap;
         }
 
-        #datatable thead th {
-            background-color: #1e293b;
-            color: white;
-            border-bottom: 2px solid #dee2e6;
+        #datatable td {
             vertical-align: middle;
         }
 
-        #datatable tbody tr:hover {
-            background-color: #f1f5f9;
-        }
-
-        #datatable td,
-        #datatable th {
-            padding: 12px 8px;
-        }
-
-        .table-responsive {
-            overflow-x: auto;
+        .badge {
+            font-size: 0.85em;
+            padding: 0.35em 0.65em;
         }
     </style>
 
-    {{-- DataTables Script --}}
     <script>
         $(document).ready(function() {
             $('#datatable').DataTable({
@@ -112,9 +92,16 @@
                 },
                 "columnDefs": [{
                         "orderable": false,
-                        "targets": [7]
-                    } // Disable sorting for action column
-                ]
+                        "targets": [8]
+                    }, // Kolom aksi
+                    {
+                        "type": "num-fmt",
+                        "targets": [4, 5, 6, 7]
+                    } // Kolom numerik
+                ],
+                "order": [
+                    [0, "desc"]
+                ] // Urutkan berdasarkan No. Resi terbaru
             });
         });
     </script>

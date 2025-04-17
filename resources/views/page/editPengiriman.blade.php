@@ -6,40 +6,34 @@
             <div class="col-lg-8">
                 <div class="card shadow-lg border-0 rounded">
                     <div class="card-body">
-                        <h3 class="card-title text-center text-primary fw-bold">Form Input Paket</h3>
+                        <h3 class="card-title text-center text-primary fw-bold">{{ $formTitle }}</h3>
                         <hr>
 
-                        @if ($errors->any())
-                            <div class="col-12">
-                                @foreach ($errors->all() as $error)
-                                    <div class="alert alert-danger">{{ $error }}</div>
-                                @endforeach
+                        {{-- Notifikasi Error --}}
+                        @if ($message = Session::get('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ $message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
 
-                        @if (session()->has('error'))
-                            <div class="alert alert-danger">{{ session('error') }}</div>
-                        @endif
-
-                        @if (session()->has('success'))
-                            <div class="alert alert-info">{{ session('success') }}</div>
-                        @endif
-
-                        {{-- Form Input Paket --}}
-                        <form class="custom-validation" action="{{ route('simpanPengiriman') }}" method="POST">
+                        {{-- Form Edit Paket --}}
+                        <form action="{{ route('updatePengiriman', $data_Pengiriman->id) }}" method="post">
                             @csrf
 
                             {{-- No Resi --}}
                             <div class="mb-3">
                                 <label class="fw-bold">No. Resi</label>
-                                <input type="text" id="noresi" name="noresi" class="form-control" required
+                                <input type="text" id="noresi" name="noresi" class="form-control"
+                                    value="{{ old('noresi', $data_Pengiriman->noresi) }}" required
                                     placeholder="Masukkan No. resi">
                             </div>
 
                             {{-- Penerima --}}
                             <div class="mb-3">
                                 <label class="fw-bold">Penerima</label>
-                                <input type="text" id="penerima" name="penerima" class="form-control" required
+                                <input type="text" id="penerima" name="penerima" class="form-control"
+                                    value="{{ old('penerima', $data_Pengiriman->penerima) }}" required
                                     placeholder="Masukkan Nama Penerima">
                             </div>
 
@@ -48,8 +42,14 @@
                                 <label class="fw-bold">Tujuan</label>
                                 <select id="tujuan" name="tujuan" class="form-select" required>
                                     <option value="" disabled selected>Pilih Tujuan</option>
-                                    <option value="Luar Kota">Luar Kota</option>
-                                    <option value="Dalam Kota">Dalam Kota</option>
+                                    <option value="Luar Kota"
+                                        {{ $data_Pengiriman->tujuan == 'Luar Kota' ? 'selected' : '' }}>
+                                        Luar
+                                        Kota</option>
+                                    <option value="Dalam Kota"
+                                        {{ $data_Pengiriman->tujuan == 'Dalam Kota' ? 'selected' : '' }}>
+                                        Dalam
+                                        Kota</option>
                                 </select>
                             </div>
 
@@ -58,26 +58,32 @@
                                 <label class="fw-bold">Layanan</label>
                                 <select id="layanan" name="layanan" class="form-select" required>
                                     <option value="" disabled selected>Pilih Layanan</option>
-                                    <option value="Udara">Udara</option>
-                                    <option value="Laut">Laut</option>
-                                    <option value="Darat">Darat</option>
+                                    <option value="Udara" {{ $data_Pengiriman->layanan == 'Udara' ? 'selected' : '' }}>
+                                        Udara
+                                    </option>
+                                    <option value="Laut" {{ $data_Pengiriman->layanan == 'Laut' ? 'selected' : '' }}>Laut
+                                    </option>
+                                    <option value="Darat" {{ $data_Pengiriman->layanan == 'Darat' ? 'selected' : '' }}>
+                                        Darat
+                                    </option>
                                 </select>
                             </div>
 
                             {{-- Berat --}}
                             <div class="mb-3">
                                 <label class="fw-bold">Berat</label>
-                                <input type="text" id="berat" name="berat" class="form-control" required
+                                <input type="text" id="berat" name="berat" class="form-control"
+                                    value="{{ old('berat', $data_Pengiriman->berat) }}" required
                                     placeholder="Masukkan Nama Penerima">
                             </div>
 
                             {{-- Tombol Aksi --}}
                             <div class="d-flex justify-content-between">
-                                <a href="{{ route('pengiriman') }}" class="btn btn-secondary">
+                                <a href="{{ route('dataPaket') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left"></i> Kembali
                                 </a>
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-save"></i> Simpan
+                                    <i class="fas fa-save"></i> Simpan Perubahan
                                 </button>
                             </div>
                         </form>

@@ -5,17 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pengiriman extends Model
+class Kelompok extends Model
 {
     use HasFactory;
-    protected $table = "data_Pengiriman";   
+    protected $table = "kelompok";   
     protected $primaryKey = "id";
     protected $fillable = [
-        'noresi',
-        'penerima',
-        'tujuan',
-        'layanan',
-        'berat',
-        // 'total_harga',
+        'nomor_kelompok',
+        'nama_anggota',
+        'jobdesk',
     ];
 }
