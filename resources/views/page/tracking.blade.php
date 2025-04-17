@@ -1,6 +1,6 @@
-        @extends('layout')
+@extends('layout')
 
-        @section('content')
+@section('content')
 
 <div class="container mt-4">
     <div class="row justify-content-center">
@@ -29,33 +29,14 @@
                     <form class="custom-validation" action="{{route('simpanTrack')}}" method="POST">
                         @csrf
 
-                        {{-- Layanan --}}
+                        {{-- Kode Pemesanan --}}
                         <div class="mb-3">
-                            <label class="fw-bold">Layanan</label>
-                            <select id="layanan" name="layanan" class="form-select" required>
-                                <option value="" disabled selected>Pilih Layanan</option>
-                                <option value="Udara">Udara</option>
-                                <option value="Laut">Laut</option>
-                                <option value="Darat">Darat</option>
-                            </select>
-                        </div>
-
-                        {{-- Waktu pengiriman--}}
-                        <div class="mb-3">
-                            <label class="fw-bold">Waktu Pengiriman</label>
-                            <input type="date" id="waktuPengiriman" name="waktuPengiriman" class="form-control" required>
-                        </div>
-
-                        {{-- Estimasi Tiba --}}
-                        <div class="mb-3">
-                            <label class="fw-bold">Estimasi Tiba</label>
-                            <input type="date" id="estimasiTiba" name="estimasiTiba" class="form-control" required>
+                            <label class="fw-bold">Kode Pemesanan</label>
+                            <input type="text" id="kodePemesanan" name="kodePemesanan" class="form-control" required>
                         </div>
 
                         {{-- Tombol Aksi --}}
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i> Simpan
-                            </button>
+                            <button type="submit" class="btn btn-primary"> Cari</button>
                         </div>
                     </form>
                 </div>
@@ -78,18 +59,23 @@
                              style="border-collapse: separate; border-spacing: 0 8px;">
                                 <thead class="table-dark">
                                     <tr style="border-radius: 10px;">
-                                        <th>Layanan</th>
-                                        <th>Waktu Pengiriman</th>
-                                        <th>Estimasi Tiba</th>
+                                        <th>Kode Pemesanan</th>
+                                        <th>Nama Barang</th>
+                                        <th>Jenis Barang</th>
+                                        <th>Status</th>
+                                        <th>Alamat Awal</th>
+                                        <th>Alamat Akhir</th>
                                         <th class="rounded-top-end">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data_Track as $item)
+                                    {{-- @foreach ($data_Track as $item)
                                         <tr>
-                                            <td>{{ $item->layanan }}</td>
-                                            <td>{{ $item->waktuPengiriman }}</td>
-                                            <td>{{ $item->estimasiTiba }}</td>
+                                            <td>{{ $item->namaBarang }}</td>
+                                            <td>{{ $item->jenisBarang }}</td>
+                                            <td>{{ $item->status }}</td>
+                                            <td>{{ $item->alamatAwal }}</td>
+                                            <td>{{ $item->alamatAkhir }}</td>
                                             <td>
                                                 <a href="{{ route('editTrack', $item->id) }}" class="btn btn-warning btn-sm">
                                                     <i class="fas fa-edit"></i> Edit
@@ -100,7 +86,7 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tbody>
                             </table>
                         </div> {{-- End Table Responsive --}}

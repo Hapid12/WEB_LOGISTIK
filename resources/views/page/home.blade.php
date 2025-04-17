@@ -8,7 +8,7 @@
         <div class="mb-10 flex justify-between items-center">
             <h1 class="text-3xl font-bold text-[#1f2937]">📦 Dashboard Logistik</h1>
             <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-700 transition">
-                <a href="/dataPaket">
+                <a href="/">
                 Tambah Pengiriman Baru
             </a>
             </button>
@@ -40,22 +40,6 @@
             </ul>
         </div>
 
-        {{-- Form Lacak Resi --}}
-        <div class="bg-white rounded-xl shadow p-6 mb-10">
-            <form class="flex flex-col md:flex-row gap-4 items-center">
-                <input type="text" placeholder="Masukkan nomor resi..." class="w-full md:flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500">
-                <button type="button" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
-                    Lacak
-                </button>
-            </form>
-        </div>
-
-        {{-- Grafik Dummy --}}
-        <div class="bg-white rounded-xl shadow p-6 mb-10">
-            <h2 class="text-lg font-semibold mb-4">📈 Statistik Mingguan</h2>
-            <img src="https://fakeimg.pl/600x250/?text=Grafik%20Statistik&font=lobster" alt="Grafik Kiriman" class="rounded-md">
-        </div>
-
         {{-- Tabel Data --}}
         <div class="bg-white rounded-xl shadow p-6">
             <h2 class="text-xl font-semibold mb-4">📄 Pengiriman Terbaru</h2>
@@ -63,35 +47,21 @@
                 <table class="min-w-full divide-y divide-gray-200 text-sm">
                     <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
                         <tr>
-                            <th class="px-4 py-2 text-left">No Resi</th>
-                            <th class="px-4 py-2 text-left">Nama Penerima</th>
-                            <th class="px-4 py-2 text-left">Status</th>
-                            <th class="px-4 py-2 text-left">Lokasi Terakhir</th>
-                            <th class="px-4 py-2 text-left">Waktu Update</th>
+                            <th class="px-4 py-2 text-center">No Resi</th>
+                            <th class="px-4 py-2 text-center">Nama Barang</th>
+                            <th class="px-4 py-2 text-center">Jenis Barang</th>
+                            <th class="px-4 py-2 text-center">Status</th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-800">
-                        <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-3 font-mono">TRK123456</td>
-                            <td class="px-4 py-3">Budi Santoso</td>
-                            <td class="px-4 py-3 text-yellow-600 font-semibold">Dalam Perjalanan</td>
-                            <td class="px-4 py-3">Jakarta</td>
-                            <td class="px-4 py-3">10 April 2025, 09:42</td>
+                        {{-- @foreach ($data_Paket as $item)
+                        <tr>
+                            <td>{{ $item->noresi }}</td>
+                            <td>{{ $item->namaBarang }}</td>
+                            <td>{{ $item->jenisBarang }}</td> 
+                            <td>{{ $item->status }}</td> 
                         </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-3 font-mono">TRK789012</td>
-                            <td class="px-4 py-3">Siti Aminah</td>
-                            <td class="px-4 py-3 text-green-600 font-semibold">Terkirim</td>
-                            <td class="px-4 py-3">Surabaya</td>
-                            <td class="px-4 py-3">10 April 2025, 08:15</td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-3 font-mono">TRK345678</td>
-                            <td class="px-4 py-3">Joko Widodo</td>
-                            <td class="px-4 py-3 text-red-600 font-semibold">Gagal Dikirim</td>
-                            <td class="px-4 py-3">Bandung</td>
-                            <td class="px-4 py-3">10 April 2025, 07:50</td>
-                        </tr>
+                        @endforeach --}}
                     </tbody>
                 </table>
             </div>

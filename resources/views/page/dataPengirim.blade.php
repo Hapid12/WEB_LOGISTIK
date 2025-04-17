@@ -10,7 +10,7 @@
                         <hr>
 
                         {{-- Form Input Paket --}}
-                        <form class="custom-validation" action="{{ route('simpanPaket') }}" method="POST">
+                        <form class="custom-validation" action="{{ route('simpanPengirim') }}" method="POST">
                             @csrf
 
                             {{-- Nama Barang --}}
@@ -32,9 +32,21 @@
                                 </select>
                             </div>
 
+                            {{-- Alamat Awal --}}
+                            <div class="mb-3">
+                                <label class="fw-bold">Alamat Awal</label>
+                                <input type="text" id="alamatAwal" name="alamatAwal" class="form-control" required placeholder="Masukkan Nama Penerima">
+                            </div>
+
+                            {{-- Alamat Akhir --}}
+                            <div class="mb-3">
+                                <label class="fw-bold">Alamat Akhir</label>
+                                <input type="text" id="alamatAkhir" name="alamatAkhir" class="form-control" required placeholder="Masukkan Nama Penerima">
+                            </div>
+
                             {{-- Tombol Aksi --}}
                             <div class="d-flex justify-content-between">
-                                <a href="{{ route('dataPaket') }}" class="btn btn-secondary">
+                                <a href="home" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left"></i> Kembali
                                 </a>
                                 <button type="submit" class="btn btn-primary">

@@ -15,7 +15,7 @@
     </div>
 
     <div class="menu-items" style="padding: 0 20px;">
-        <a href="{{ route('tabelRiwayat') }}" class="menu-link {{ request()->routeIs('tabelRiwayat') ? 'active' : '' }}">
+        <a href="{{ route('history') }}" class="menu-link {{ request()->routeIs('history') ? 'active' : '' }}">
             <i class="ri-history-line me-2"></i> <span>Histori</span>
         </a>
     </div>
@@ -26,9 +26,8 @@
             <i class="ri-arrow-down-s-line" style="margin-left:auto;"></i>
         </button>
         <div class="dropdown-menu" id="dataPaketDropdown">
-            <a href="{{ route('dataPaket') }}" class="submenu-link">Data Paket</a>
-            <a href="{{ route('trackingHistory') }}" class="submenu-link">Tracking History</a>
-            <a href="{{ route('pengiriman') }}" class="submenu-link">Pengirim</a>
+            <a href="{{ route('dataPengirim') }}" class="submenu-link">Data Pengirim</a>
+            <a href="{{ route('tracking') }}" class="submenu-link">Tracking</a>
             <a href="{{ route('tarifHarga') }}" class="submenu-link">Tarif Harga</a>
         </div>
 </div>
