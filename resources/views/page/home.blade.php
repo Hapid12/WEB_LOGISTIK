@@ -8,7 +8,7 @@
         <div class="mb-10 flex justify-between items-center">
             <h1 class="text-3xl font-bold text-[#1f2937]">📦 Dashboard Logistik</h1>
             <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-700 transition">
-                <a href="/">
+                <a href="/dataPengirim">
                 Tambah Pengiriman Baru
             </a>
             </button>
