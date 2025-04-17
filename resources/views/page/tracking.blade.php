@@ -75,10 +75,10 @@
                                         <td>{{ $item->alamatAwal }}</td>
                                         <td>{{ $item->alamatAkhir }}</td>
                                         <td>
-                                            <a href="{{ route('editTrack', $item->id) }}" class="btn btn-warning btn-sm">
+                                            <a href="{{ route('editPengirim', $item->id) }}" class="btn btn-warning btn-sm">
                                                 <i class="fas fa-edit"></i> Edit
                                             </a>
-                                            <a href="{{ route('hapusTrack', $item->id) }}" class="btn btn-danger btn-sm"
+                                            <a href="{{ route('hapusPengirim', $item->id) }}" class="btn btn-danger btn-sm"
                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                 <i class="fas fa-trash"></i> Hapus
                                             </a>
