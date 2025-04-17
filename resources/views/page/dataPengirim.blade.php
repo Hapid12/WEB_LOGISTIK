@@ -13,6 +13,12 @@
                         <form class="custom-validation" action="{{ route('simpanPengirim') }}" method="POST">
                             @csrf
 
+                            {{-- No Resi --}}
+                            <div class="mb-3">
+                                <label class="fw-bold">Kode Pemesanan</label>
+                                <input type="text" id="noresi" name="noresi" class="form-control" required placeholder="Masukkan No.Resi">
+                            </div>
+
                             {{-- Nama Barang --}}
                             <div class="mb-3">
                                 <label class="fw-bold">Nama Barang</label>

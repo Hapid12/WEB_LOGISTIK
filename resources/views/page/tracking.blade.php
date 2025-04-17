@@ -66,9 +66,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($data_Track as $item)
+                                @foreach ($dataPengirim as $item)
                                     <tr>
-                                        <td>{{ $item->kodePemesanan }}</td>
+                                        <td>{{ $item->noresi }}</td>
                                         <td>{{ $item->namaBarang }}</td>
                                         <td>{{ $item->jenisBarang }}</td>
                                         <td>{{ $item->status }}</td>
@@ -84,7 +84,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
