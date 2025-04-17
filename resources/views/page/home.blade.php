@@ -42,10 +42,10 @@
 
         {{-- Tabel Data --}}
         <div class="bg-white rounded-xl shadow p-6">
-            <h2 class="text-xl font-semibold mb-4">📄 Pengiriman Terbaru</h2>
+            <h2 class="text-xl font-semibold mb-4">History</h2>
             <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200 text-sm">
-                    <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+                <table id="datatable" class="min-w-full divide-y divide-gray-200 text-sm text-center table-auto">
+                    <thead class="bg-gray-800 text-white">
                         <tr>
                             <th class="px-4 py-2 text-center">No Resi</th>
                             <th class="px-4 py-2 text-center">Nama Barang</th>
@@ -69,4 +69,27 @@
 
     </div>
 </div>
+{{-- DataTables CDN --}}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#datatable').DataTable({
+            responsive: true,
+            language: {
+                lengthMenu: 'Tampilkan _MENU_ data per halaman',
+                zeroRecords: 'Data tidak ditemukan',
+                info: 'Menampilkan halaman _PAGE_ dari _PAGES_',
+                infoEmpty: 'Tidak ada data yang tersedia',
+                search: 'Cari:',
+                paginate: {
+                    next: 'Selanjutnya',
+                    previous: 'Sebelumnya'
+                }
+            }
+        });
+    });
+</script>
 @endsection

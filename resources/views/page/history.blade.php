@@ -4,25 +4,20 @@
 
 {{-- Tabel Data --}}
 <div class="bg-white rounded-xl shadow p-6">
-  <h2 class="text-xl font-semibold mb-4">History</h2>
-  <div class="overflow-x-auto">
-      <table class="min-w-full divide-y divide-gray-200 text-sm">
-          <tbody class="text-gray-800">
-              {{-- Tabel Data Tracking --}}
-              <div class="table-responsive">
-                <table id="datatable" class="table table-striped table-hover table-bordered align-middle text-center"
-                 style="border-collapse: separate; border-spacing: 0 8px;">
-                    <thead class="table-dark">
-                        <tr style="border-radius: 10px;">
-                            <th>Kode Pemesanan</th>
-                            <th>Nama Barang</th>
-                            <th>Jenis Barang</th>
-                            <th>Status</th>
-                            <th>Alamat Awal</th>
-                            <th>Alamat Akhir</th>
-                            <th class="rounded-top-end">Aksi</th>
-                        </tr>
-                    </thead>
+    <h2 class="text-xl font-semibold mb-4">History</h2>
+    <div class="overflow-x-auto">
+        <table id="datatable" class="min-w-full divide-y divide-gray-200 text-sm text-center table-auto">
+            <thead class="bg-gray-800 text-white">
+                <tr>
+                    <th class="px-4 py-2">Kode Pemesanan</th>
+                    <th class="px-4 py-2">Nama Barang</th>
+                    <th class="px-4 py-2">Jenis Barang</th>
+                    <th class="px-4 py-2">Status</th>
+                    <th class="px-4 py-2">Alamat Awal</th>
+                    <th class="px-4 py-2">Alamat Akhir</th>
+                    <th class="px-4 py-2">Aksi</th>
+                </tr>
+            </thead>
                     <tbody>
                         {{-- @foreach ($data_Track as $item)
                             <tr>
@@ -47,4 +42,28 @@
       </table>
   </div>
 </div>
+
+{{-- DataTables CDN --}}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#datatable').DataTable({
+            responsive: true,
+            language: {
+                lengthMenu: 'Tampilkan _MENU_ data per halaman',
+                zeroRecords: 'Data tidak ditemukan',
+                info: 'Menampilkan halaman _PAGE_ dari _PAGES_',
+                infoEmpty: 'Tidak ada data yang tersedia',
+                search: 'Cari:',
+                paginate: {
+                    next: 'Selanjutnya',
+                    previous: 'Sebelumnya'
+                }
+            }
+        });
+    });
+</script>
 @endsection
