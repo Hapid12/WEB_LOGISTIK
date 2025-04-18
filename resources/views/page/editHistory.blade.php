@@ -51,7 +51,7 @@
                                 <label class="form-label fw-semibold"><i class="fas fa-map-marker-alt me-1"></i>Alamat Awal</label>
                                 <select class="form-select" name="alamatAwal" required>
                                     <option value="" disabled>Pilih Provinsi / Ibu Kota</option>
-                                    @foreach(['Aceh', 'Sumatera Utara', 'Jakarta', 'Jawa Barat'] as $prov)
+                                    @foreach(['Aceh', 'Bandung', 'Bogor', 'Malang', 'Tanggerang', 'Banyuwangi'] as $prov)
                                         <option value="{{ $prov }}" {{ $pengirim->alamatAwal == $prov ? 'selected' : '' }}>{{ $prov }}</option>
                                     @endforeach
                                 </select>
@@ -60,7 +60,7 @@
                                 <label class="form-label fw-semibold"><i class="fas fa-map-pin me-1"></i>Alamat Akhir</label>
                                 <select class="form-select" name="alamatAkhir" required>
                                     <option value="" disabled>Pilih Provinsi / Ibu Kota</option>
-                                    @foreach(['Aceh', 'Sumatera Utara', 'Jakarta', 'Jawa Barat'] as $prov)
+                                    @foreach(['Aceh', 'Bandung', 'Bogor', 'Malang', 'Tanggerang', 'Banyuwangi'] as $prov)
                                         <option value="{{ $prov }}" {{ $pengirim->alamatAkhir == $prov ? 'selected' : '' }}>{{ $prov }}</option>
                                     @endforeach
                                 </select>

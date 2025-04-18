@@ -14,7 +14,7 @@
                         <th>Status</th>
                         <th>Alamat Awal</th>
                         <th>Alamat Akhir</th>
-                        <th class="rounded-top-end">Aksi</th>
+                        <th class="rounded-top-end">Harga</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +26,7 @@
                             <td>{{ $item->status }}</td>
                             <td>{{ $item->alamatAwal }}</td>
                             <td>{{ $item->alamatAkhir }}</td>
+                            <td></td>
                         </tr>
                     @endforeach
                 </tbody>

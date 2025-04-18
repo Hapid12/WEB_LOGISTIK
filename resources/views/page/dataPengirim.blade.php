@@ -15,7 +15,7 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        
+
                         <form action="{{ route('simpanPengirim') }}" method="POST">
                             @csrf
 
@@ -67,6 +67,11 @@
                                         <option value="" selected disabled>Pilih Provinsi / Ibu Kota</option>
                                         {{-- Daftar provinsi --}}
                                         <option value="Aceh">Banda Aceh (Aceh)</option>
+                                        <option value="Bandung">Bandung (Soreang)</option>
+                                        <option value="Bogor">Bogor (Cibinong)</option>
+                                        <option value="Malang">Malang (Kepanjen)</option>
+                                        <option value="Tanggerang">Tanggerang (Tigaraksa)</option>
+                                        <option value="Banyuwangi">Banyuwangi (Banyuwangi)</option>
                                         {{-- ... lanjut seperti sebelumnya --}}
                                     </select>
                                 </div>
@@ -77,6 +82,11 @@
                                         <option value="" selected disabled>Pilih Provinsi / Ibu Kota</option>
                                         {{-- Daftar provinsi --}}
                                         <option value="Aceh">Banda Aceh (Aceh)</option>
+                                        <option value="Bandung">Bandung (Soreang)</option>
+                                        <option value="Bogor">Bogor (Cibinong)</option>
+                                        <option value="Malang">Malang (Kepanjen)</option>
+                                        <option value="Tanggerang">Tanggerang (Tigaraksa)</option>
+                                        <option value="Banyuwangi">Banyuwangi (Banyuwangi)</option>
                                         {{-- ... lanjut seperti sebelumnya --}}
                                     </select>
                                 </div>
