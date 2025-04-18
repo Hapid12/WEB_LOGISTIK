@@ -89,12 +89,74 @@ class MainController extends Controller
     // Fungsi untuk model tarif harga
     public function tarifHarga()
     {
-        $data = [
+        $dataPengirim = dataPengirim::all();
+
+        // Menambahkan tarif ke masing-masing entri
+        foreach ($dataPengirim as $item) {
+            $item->tarif = $this->hitungTarifDariAlamat($item->alamatAwal, $item->alamatAkhir);
+        }
+
+        return view('page.tarifHarga', [
             'title' => 'Tarif Harga',
-            'pengirim' => dataPengirim::all()
-        ];
-        return view('page\tarifHarga', $data);
+            'dataPengirim' => $dataPengirim
+        ]);
     }
+
+    private function hitungTarifDariAlamat($awal, $akhir)
+    {
+        $tarifList = [
+            'Aceh' => [
+                'Bandung' => 50000,
+                'Bogor' => 120000,
+                'Malang' => 200000,
+                'Tanggerang' => 320000,
+                'Banyuwangi' => 420000,
+            ],
+            'Bandung' => [
+                'Aceh' => 50000,
+                'Bogor' => 120000,
+                'Malang' => 200000,
+                'Tanggerang' => 320000,
+                'Banyuwangi' => 420000,
+            ],
+            'Bogor' => [
+                'Aceh' => 50000,
+                'Bandung' => 120000,
+                'Malang' => 200000,
+                'Tanggerang' => 320000,
+                'Banyuwangi' => 420000,
+            ],
+            'Malang' => [
+                'Aceh' => 50000,
+                'Bandung' => 120000,
+                'Bogor' => 200000,
+                'Tanggerang' => 320000,
+                'Banyuwangi' => 420000,
+            ],
+            'Tanggerang' => [
+                'Aceh' => 50000,
+                'Bandung' => 120000,
+                'Bogor' => 200000,
+                'Malang' => 320000,
+                'Banyuwangi' => 420000,
+            ],
+            'Banyuwangi' => [
+                'Aceh' => 50000,
+                'Bandung' => 120000,
+                'Bogor' => 200000,
+                'Malang' => 320000,
+                'Tanggerang' => 420000,
+            ],
+            // Tambahkan sesuai kebutuhan
+        ];
+
+        if (isset($tarifList[$awal][$akhir])) {
+            return $tarifList[$awal][$akhir];
+        }
+
+        return 75000; // Tarif default jika tidak ditemukan
+    }
+
 
     // fungsi tabel riwayat
     public function history()

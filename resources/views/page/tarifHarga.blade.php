@@ -3,35 +3,35 @@
 @section('content')
 <div class="container">
     <h1>Cek {{ $title }}</h1>
-        <div class="table-responsive">
-            <table id="datatable" class="table table-striped table-hover table-bordered align-middle text-center"
-                style="border-collapse: separate; border-spacing: 0 8px;">
-                <thead class="table-dark">
+    <div class="table-responsive">
+        <table id="datatable" class="table table-striped table-hover table-bordered align-middle text-center"
+            style="border-collapse: separate; border-spacing: 0 8px;">
+            <thead class="table-dark">
+                <tr>
+                    <th>Kode Pengiriman</th>
+                    <th>Nama Pengirim</th>
+                    <th>Jenis Barang</th>
+                    <th>Status</th>
+                    <th>Alamat Awal</th>
+                    <th>Alamat Akhir</th>
+                    <th class="rounded-top-end">Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($dataPengirim as $item)
                     <tr>
-                        <th>Kode Pengiriman</th>
-                        <th>Nama Pengirim</th>
-                        <th>Jenis Barang</th>
-                        <th>Status</th>
-                        <th>Alamat Awal</th>
-                        <th>Alamat Akhir</th>
-                        <th class="rounded-top-end">Harga</th>
+                        <td>{{ $item->kodePengiriman }}</td>
+                        <td>{{ $item->namaPengirim }}</td>
+                        <td>{{ $item->jenisBarang }}</td>
+                        <td>{{ $item->status }}</td>
+                        <td>{{ $item->alamatAwal }}</td>
+                        <td>{{ $item->alamatAkhir }}</td>
+                        <td>Rp {{ number_format($item->tarif, 0, ',', '.') }}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($pengirim as $item)
-                        <tr>
-                            <td>{{ $item->kodePengiriman }}</td>
-                            <td>{{ $item->namaPengirim }}</td>
-                            <td>{{ $item->jenisBarang }}</td>
-                            <td>{{ $item->status }}</td>
-                            <td>{{ $item->alamatAwal }}</td>
-                            <td>{{ $item->alamatAkhir }}</td>
-                            <td></td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {{-- STYLING --}}
@@ -46,7 +46,7 @@
         padding: 0;
     }
     .container {
-        max-width: 900px;
+        max-width: 1200px; /* Lebar container diperbesar */
         margin: 40px auto;
         background: #ffffff;
         padding: 40px;
@@ -71,7 +71,7 @@
     }
     table {
         width: 100%;
-        border-collapse: collapse;
+        table-layout: fixed; /* Menetapkan lebar tabel tetap */
         margin-top: 30px;
         font-size: 16px;
     }
@@ -87,7 +87,31 @@
     }
     td {
         color: #334155;
+        word-wrap: break-word; /* Menghindari teks yang terlalu panjang keluar dari kolom */
     }
+    /* Lebar kolom khusus */
+    th:nth-child(1), td:nth-child(1) {
+        width: 15%;
+    }
+    th:nth-child(2), td:nth-child(2) {
+        width: 20%;
+    }
+    th:nth-child(3), td:nth-child(3) {
+        width: 15%;
+    }
+    th:nth-child(4), td:nth-child(4) {
+        width: 10%;
+    }
+    th:nth-child(5), td:nth-child(5) {
+        width: 20%;
+    }
+    th:nth-child(6), td:nth-child(6) {
+        width: 20%;
+    }
+    th:nth-child(7), td:nth-child(7) {
+        width: 20%;
+    }
+
     @media (max-width: 600px) {
         .container {
             margin: 20px;

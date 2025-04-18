@@ -61,3 +61,5 @@ Route::delete('/pengirim/{id}', [MainController::class, 'destroyHistory'])->name
 
 // tarif
 Route::get('/tarifHarga', [MainController::class, 'tarifHarga'])->name('tarifHarga');
+Route::post('/hitung-tarif', [MainController::class, 'hitungTarif'])->name('hitungTarif');
+
