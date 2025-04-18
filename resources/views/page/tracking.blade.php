@@ -8,30 +8,19 @@
         <div class="col-lg-8">
             <div class="card shadow-lg border-0 rounded">
                 <div class="card-body">
-                    @if ($errors->any())
-                        <div class="col-12">
-                            @foreach ($errors->all() as $error)
-                                <div class="alert alert-danger">{{ $error }}</div>
-                            @endforeach
-                        </div>
-                    @endif
 
                     @if (session()->has('error'))
                         <div class="alert alert-danger">{{ session('error') }}</div>
                     @endif
 
-                    @if (session()->has('success'))
-                        <div class="alert alert-info">{{ session('success') }}</div>
-                    @endif
-
                     <h3 class="card-title text-center text-primary fw-bold">Form Input Tracking</h3>
                     <hr>
 
-                    <form class="custom-validation" action="{{ route('simpanTrack') }}" method="POST">
+                    <form action="{{ route('tracking.cari') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label class="fw-bold">Kode Pemesanan</label>
-                            <input type="text" id="kodePemesanan" name="kodePemesanan" class="form-control" required>
+                            <input type="text" name="kodePemesanan" class="form-control" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Cari</button>
@@ -42,7 +31,8 @@
     </div>
 </div>
 
-<!-- TABEL DATA -->
+<!-- TABEL HASIL -->
+@if($pengirim)
 <div class="container-fluid mt-4">
     <div class="row">
         <div class="col-12">
@@ -52,8 +42,7 @@
                     <hr>
 
                     <div class="table-responsive">
-                        <table id="datatable" class="table table-striped table-hover table-bordered align-middle text-center"
-                               style="border-collapse: separate; border-spacing: 0 8px;">
+                        <table id="datatable" class="table table-striped table-hover table-bordered align-middle text-center">
                             <thead class="table-dark">
                                 <tr>
                                     <th>Kode Pengiriman</th>
@@ -62,7 +51,6 @@
                                     <th>Status</th>
                                     <th>Alamat Awal</th>
                                     <th>Alamat Akhir</th>
-                                    <th class="rounded-top-end">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,13 +67,15 @@
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endif
 
-<!-- STYLING -->
+<!-- DATATABLE STYLING -->
 <style>
     #datatable th, #datatable td {
         border: 1px solid #dee2e6;
@@ -94,7 +84,6 @@
     #datatable thead th {
         background-color: #1e293b;
         color: white;
-        border-bottom: 2px solid #dee2e6;
         vertical-align: middle;
     }
 
@@ -102,36 +91,28 @@
         background-color: #f1f5f9;
     }
 
-    #datatable td, #datatable th {
-        padding: 12px 8px;
-    }
-
     .table-responsive {
         overflow-x: auto;
     }
 </style>
 
-<!-- DATATABLES CDN -->
-<!-- jQuery -->
+<!-- DATATABLE SCRIPTS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- DataTables CSS -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-<!-- DataTables JS -->
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-<!-- SCRIPT DATATABLES -->
 <script>
     $(document).ready(function () {
         $('#datatable').DataTable({
-            "columnDefs": [
-                { "orderable": false, "targets": -1 } // kolom Aksi tidak disort
-            ],
-            "language": {
+            searching: false,
+            paging: true,
+            info: true,
+            ordering: false,
+            language: {
                 "lengthMenu": "Tampilkan _MENU_ data per halaman",
                 "zeroRecords": "Data tidak ditemukan",
                 "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
                 "infoEmpty": "Tidak ada data yang tersedia",
-                "search": "Cari:",
                 "paginate": {
                     "next": "Selanjutnya",
                     "previous": "Sebelumnya"

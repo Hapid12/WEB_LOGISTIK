@@ -18,7 +18,7 @@
                         @endif
 
                         {{-- Form Edit Tracking --}}
-                        <form action="{{ route('updateTrack', $dataTrack->id) }}" method="post">
+                        <form action="{{ route('updateHistory', $pengirim>id) }}" method="post">
                             @csrf
 
                             {{-- Layanan --}}

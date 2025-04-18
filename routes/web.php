@@ -51,9 +51,13 @@ Route::post('/simpanPengirim', [MainController::class, 'storePengirim'])->name('
 // tracking
 Route::get('/tracking', [MainController::class, 'tracking'])->name('tracking');
 Route::get('/simpanTrack', [MainController::class, 'tracking'])->name('simpanTrack');
+Route::post('/tracking/cari', [MainController::class, 'cariTracking'])->name('tracking.cari');
 
 // history
 Route::get('/history', [MainController::class, 'history'])->name('history');
+Route::get('/pengirim/{id}/editHistory', [MainController::class, 'editHistory'])->name('editHistory');
+Route::put('/pengirim/{id}', [MainController::class, 'updateHistory'])->name('updateHistory');
+Route::delete('/pengirim/{id}', [MainController::class, 'destroyHistory'])->name('destroyHistory');
 
 // tarif
 Route::get('/tarifHarga', [MainController::class, 'tarifHarga'])->name('tarifHarga');

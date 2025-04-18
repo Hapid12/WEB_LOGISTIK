@@ -54,7 +54,6 @@
                             <th>Status</th>
                             <th>Alamat Awal</th>
                             <th>Alamat Akhir</th>
-                            <th class="rounded-top-end">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,6 +83,7 @@
     $(document).ready(function () {
         $('#datatable').DataTable({
             responsive: true,
+            searching: false, // 👉 ini yang menonaktifkan fitur search
             language: {
                 lengthMenu: 'Tampilkan _MENU_ data per halaman',
                 zeroRecords: 'Data tidak ditemukan',
