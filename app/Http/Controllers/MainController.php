@@ -14,7 +14,7 @@ class MainController extends Controller
     {
         $data = array(
             'title' => 'Home',
-
+            'pengirim' => dataPengirim::all() 
         );
         return view('page/home', $data);
     }
@@ -58,7 +58,9 @@ class MainController extends Controller
     {
         $data = [
             'title' => 'tracking',
-        ];
+            'pengirim' => dataPengirim::all() // ambil semua data pengirim
+    ];
+     
         return view('page\tracking', $data);
     }
 
@@ -67,6 +69,7 @@ class MainController extends Controller
     {
         $data = [
             'title' => 'Tarif Harga',
+            'pengirim' => dataPengirim::all()
         ];
         return view('page\tarifHarga', $data);
     }
@@ -76,6 +79,7 @@ class MainController extends Controller
     {
         $data = [
             'title' => 'History',
+            'pengirim' => dataPengirim::all()
         ];
         return view('page\history', $data);
     }

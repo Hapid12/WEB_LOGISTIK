@@ -3,27 +3,34 @@
 @section('content')
 <div class="container">
     <h1>Cek {{ $title }}</h1>
-    <div class="table-responsive">
-        <table id="datatable" class="table table-striped table-hover table-bordered align-middle text-center"
-               style="border-collapse: separate; border-spacing: 0 8px;">
-            <thead class="table-dark">
-                <tr style="border-radius: 10px;">
-                    <th>Layanan</th>
-                    <th>Estimasi</th>
-                    <th>Alamat Pengirim</th>
-                    <th>Alamat Penerima</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-label="Layanan">Udara</td>
-                    <td data-label="Estimasi">2-3 Hari</td>
-                    <td data-label="Alamat Pengirim">Jakarta</td>
-                    <td data-label="Alamat Penerima">Bandung</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <div class="table-responsive">
+            <table id="datatable" class="table table-striped table-hover table-bordered align-middle text-center"
+                style="border-collapse: separate; border-spacing: 0 8px;">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Kode Pengiriman</th>
+                        <th>Nama Pengirim</th>
+                        <th>Jenis Barang</th>
+                        <th>Status</th>
+                        <th>Alamat Awal</th>
+                        <th>Alamat Akhir</th>
+                        <th class="rounded-top-end">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($pengirim as $item)
+                        <tr>
+                            <td>{{ $item->kodePengiriman }}</td>
+                            <td>{{ $item->namaPengirim }}</td>
+                            <td>{{ $item->jenisBarang }}</td>
+                            <td>{{ $item->status }}</td>
+                            <td>{{ $item->alamatAwal }}</td>
+                            <td>{{ $item->alamatAkhir }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 </div>
 
 {{-- STYLING --}}
