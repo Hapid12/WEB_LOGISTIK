@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dataPengirim', function (Blueprint $table) {
+        Schema::create('data_Pengirim', function (Blueprint $table) {
             $table->id();
-            $table->integer('noresi')->require;
-            $table->string('namaBarang')->require;
+            $table->integer('kodePengiriman')->require;
+            $table->string('namaPengirim')->require;
             $table->string('jenisBarang')->require;
-            $table->string('status')->nullable();
+            $table->string('status')->nullable(false);
             $table->string('alamatAwal')->require;
             $table->string('alamatAkhir')->require;
             $table->timestamps();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dataPengirim');
+        Schema::dropIfExists('data_Pengirim');
     }
 };

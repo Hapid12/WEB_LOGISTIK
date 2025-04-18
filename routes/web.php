@@ -48,7 +48,7 @@ Route::get('/home', [MainController::class, 'home'])->name('home');
 
 // data pengirim
 Route::get('/dataPengirim', [MainController::class, 'dataPengirim'])->name('dataPengirim');
-Route::post('/simpanPengirim', [MainController::class, 'dataPengirim'])->name('simpanPengirim');
+Route::post('/simpanPengirim', [MainController::class, 'storePengiriman'])->name('simpanPengirim');
 
 // tracking
 Route::get('/tracking', [MainController::class, 'tracking'])->name('tracking');

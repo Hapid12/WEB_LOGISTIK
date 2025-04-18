@@ -56,8 +56,8 @@
                                style="border-collapse: separate; border-spacing: 0 8px;">
                             <thead class="table-dark">
                                 <tr>
-                                    <th>Kode Pemesanan</th>
-                                    <th>Nama Barang</th>
+                                    <th>Kode Pengiriman</th>
+                                    <th>Nama Pengirim</th>
                                     <th>Jenis Barang</th>
                                     <th>Status</th>
                                     <th>Alamat Awal</th>
@@ -66,10 +66,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dataPengirim as $item)
+                                {{-- @foreach ($dataPengirim as $item)
                                     <tr>
-                                        <td>{{ $item->noresi }}</td>
-                                        <td>{{ $item->namaBarang }}</td>
+                                        <td>{{ $item->kodePengiriman }}</td>
+                                        <td>{{ $item->namaPengirim }}</td>
                                         <td>{{ $item->jenisBarang }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>{{ $item->alamatAwal }}</td>
@@ -84,7 +84,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @endforeach --}}
                             </tbody>
                         </table>
                     </div>
