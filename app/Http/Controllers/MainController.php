@@ -71,18 +71,20 @@ class MainController extends Controller
             'kodePemesanan' => 'required|string'
         ]);
 
-        $kode = $request->kodePemesanan;
+        $kode = $request->input('kodePemesanan');
         $data = dataPengirim::where('kodePengiriman', $kode)->get();
 
         if ($data->isEmpty()) {
-            return redirect()->back()->with('error', 'Data tidak ditemukan.');
+            return redirect()->back()->with('error', 'Data tidak ditemukan.')->with('searched', true);
         }
 
         return view('page/tracking', [
             'pengirim' => $data,
-            'title' => "Hasil Tracking untuk Kode: $kode"
+            'title' => "Hasil Tracking untuk Kode: $kode",
+            'searched' => true // kirim flag pencarian
         ]);
     }
+
 
     // Fungsi untuk model tarif harga
     public function tarifHarga()

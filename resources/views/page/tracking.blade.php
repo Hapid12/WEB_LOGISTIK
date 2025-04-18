@@ -32,7 +32,7 @@
 </div>
 
 <!-- TABEL HASIL -->
-@if($pengirim)
+@if(isset($searched) && $pengirim && count($pengirim) > 0)
 <div class="container-fluid mt-4">
     <div class="row">
         <div class="col-12">
