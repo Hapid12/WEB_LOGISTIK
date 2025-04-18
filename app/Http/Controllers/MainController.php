@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataPaket;
+
 use App\Models\dataPengirim;
-use App\Models\Kelompok;
-use App\Models\Pengiriman;
-use App\Models\TrackingHistory;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -31,6 +28,30 @@ class MainController extends Controller
         );
         return view('page/dataPengirim', $data);
     }
+
+     // Simpan data tracking
+     public function storePengirim(Request $request)
+     {
+         $request->validate([
+             'kodePengiriman' => 'required|string',
+             'namaPengirim' => 'required|string',
+             'jenisBarang' => 'required|string',
+             'status' => 'required|string',
+             'alamatAwal' => 'required|string',
+             'alamatAkhir' => 'required|string'
+         ]);
+ 
+         dataPengirim::create([
+             'kodePengiriman' => $request->kodePengiriman,
+             'namaPengirim' => $request->namaPengirim,
+             'jenisBarang' => $request->jenisBarang,
+             'status' => $request->status,
+             'alamatAwal' => $request->alamatAwal,
+             'alamatAkhir' => $request->alamatAkhir
+         ]);
+ 
+         return redirect('dataPengirim')->with('success', 'Data berhasil disimpan!');
+     }
 
     // Menampilkan data tracking 
     public function tracking()

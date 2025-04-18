@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\PengirimanController;
-use App\Models\Pengiriman;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -48,7 +46,7 @@ Route::get('/home', [MainController::class, 'home'])->name('home');
 
 // data pengirim
 Route::get('/dataPengirim', [MainController::class, 'dataPengirim'])->name('dataPengirim');
-Route::post('/simpanPengirim', [MainController::class, 'storePengiriman'])->name('simpanPengirim');
+Route::post('/simpanPengirim', [MainController::class, 'storePengirim'])->name('simpanPengirim');
 
 // tracking
 Route::get('/tracking', [MainController::class, 'tracking'])->name('tracking');
